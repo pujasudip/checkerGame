@@ -13,10 +13,37 @@ var board2DArray = [
     [2,0,2,0,2,0,2,0]
 ];
 
-
 function initializeApp(){
     game = new CheckerGame();
-    game.startUp();
+    $(window).on('load',function(){
+        debugger;
+        $('#choosePlayer').modal('show');
+        $('.player1Modal').click(function(){
+            game.currentPlayer = 0;
+            game.startUp();
+        });
+        $('.player2Modal').click(function(){
+            game.currentPlayer = 1;
+            game.startUp();
+        })
+    });
+    $('.resetGame').click(()=>{
+        game.resetGame();
+    });
+    window.onclick = function(event){
+        // var winModal = document.getElementsByClassName('winModal');
+        var winModal = document.getElementById('wM');
+        var closeBtn = document.getElementById('cB');
+        //this is for backdrop or close button
+        // if(event.target == winModal || event.target == closeBtn){
+        //     winModal.style.display = 'none';
+        // }
+        //this is for just close button, will do nothing if backdrop is clicked
+        if(event.target == closeBtn){
+            game.resetGame();
+            winModal.style.display = 'none';
+        }
+    }
 }
 
 class CheckerGame{
@@ -28,6 +55,8 @@ class CheckerGame{
         this.origin = [];
         this.deceasedPlayer1Count = 0;
         this.deceasedPlayer2Count = 0;
+        this.currentPlayer = 1;
+        this.playerChips = ['blackPiece', 'whitePiece'];
     }
 
     startUp(){
@@ -43,15 +72,37 @@ class CheckerGame{
         this.player = '';
     }
 
-    switchPlayer(){
-
+    resetGame(){
+        this.resetGlobalVariables();
+        $('.killedPlayer1').empty();
+        $('.killedPlayer2').empty();
+        $('.gameAction').empty();
+        board2DArray = [
+            [0,1,0,1,0,1,0,1],
+            [1,0,1,0,1,0,1,0],
+            [0,1,0,1,0,1,0,1],
+            [0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [2,0,2,0,2,0,2,0],
+            [0,2,0,2,0,2,0,2],
+            [2,0,2,0,2,0,2,0]
+        ];
+        this.deceasedPlayer1Count = 0;
+        this.deceasedPlayer2Count = 0;
+        $('#choosePlayer').modal('show');
+        $('.player1Modal').click(() => {
+            this.currentPlayer = 0;
+        });
+        $('.player2Modal').click(() => {
+            this.currentPlayer = 1;
+        });
     }
 
     buildGameBoard(){
         var squareColorClassArray = ['light', 'dark'];
         var colorIndex = 0;
         for(var arrayIndexOuter = 0; arrayIndexOuter < board2DArray.length; arrayIndexOuter++){
-            var outerDiv = $('<div>').addClass('row');
+            var outerDiv = $('<div>').addClass('rowOfPieces');
             for(var arrayIndexInner = 0; arrayIndexInner < board2DArray[arrayIndexOuter].length; arrayIndexInner++){
                 var squareDiv = $('<div>').addClass('square ' + squareColorClassArray[colorIndex]);
                 outerDiv.append(squareDiv);
@@ -63,7 +114,7 @@ class CheckerGame{
     }
 
     populateChips(){
-        var rowsInGameBoard = $('.gameAction > .row');
+        var rowsInGameBoard = $('.gameAction > .rowOfPieces');
         for(var i = 0; i < board2DArray.length; i++){
             var row = rowsInGameBoard.eq(i);
             for(var j = 0; j < board2DArray[i].length; j++){
@@ -84,23 +135,42 @@ class CheckerGame{
                 }
             }
         }
+        if(this.currentPlayer === 0){
+            $('.player1').addClass('playerSelected');
+            $('.player2').removeClass('playerSelected');
+        } else{
+            $('.player2').addClass('playerSelected');
+            $('.player1').removeClass('playerSelected');
+        }
     }
 
     applyClickHandlers(){
-        $('div.gameAction > div *').on('click', this.selectPiece);
-    }
-    removeClickHandlers(){
-        $('.gameAction *').off();
+        // var blackTokenPlayers = $('.rowOfPieces > div:not(.whitePiece)');
+        // var whiteTokenPlayers = $('.rowOfPieces > div:not(.blackPiece)');
+
+        $(".rowOfPieces > div").click(this.selectPiece);
+
     }
 
     selectPiece(event){
         this.boardRowIndex = $(event.target).parent().index();
         this.boardColIndex = $(event.target).index();
+        var clickedPlayer = board2DArray[this.boardRowIndex][this.boardColIndex];
+
+        if(this.currentPlayer === 0 && clickedPlayer === 2){
+            return;
+        } else if (this.currentPlayer === 1 && clickedPlayer === 1) {
+            return;
+        } else if (this.currentPlayer === 0 && clickedPlayer === 20){
+            return;
+        } else if(this.currentPlayer === 1 && clickedPlayer === 10){
+            return;
+        }
 
         // this will remove selection if you clicked on empty box which is not intended to move and returns
         if(board2DArray[this.boardRowIndex][this.boardColIndex] === 0 && !$(event.target).hasClass('selectedToMove')){
-            $('.row div').removeClass('highlightPiece');
-            $('.row div').removeClass('selectedToMove');
+            $('.rowOfPieces div').removeClass('highlightPiece');
+            $('.rowOfPieces div').removeClass('selectedToMove');
             return;
         }
 
@@ -110,8 +180,11 @@ class CheckerGame{
                 board2DArray[this.origin[0]][this.origin[1]] = 0;
                 if($(event.target).hasClass('killer')){
                     var enemyKilled = this.enemyBeingKilled();
-                    board2DArray[enemyKilled[0]][enemyKilled[1]] = 0;
-                    $('.row div').removeClass('killer');
+                    if(!this.isLocationOutOfBounds(enemyKilled)){
+                        this.updateDeceasedPlayerCount(enemyKilled);
+                        board2DArray[enemyKilled[0]][enemyKilled[1]] = 0;
+                    }
+                    $('.rowOfPieces div').removeClass('killer');
                 }
                 if($(event.target).parent().index() === 0 && this.player === 2){
                     board2DArray[this.boardRowIndex][this.boardColIndex] = 20;
@@ -121,11 +194,12 @@ class CheckerGame{
                     board2DArray[this.boardRowIndex][this.boardColIndex] = 10;
                     this.populateChips();
                 }
-                $('.row div').removeClass('highlightPiece');
-                $('.row div').removeClass('selectedToMove');
+                $('.rowOfPieces div').removeClass('highlightPiece');
+                $('.rowOfPieces div').removeClass('selectedToMove');
+
+                this.currentPlayer = 1 - this.currentPlayer;
                 this.populateChips();
                 this.resetGlobalVariables();
-                this.switchPlayer();
                 return;
             }
         }
@@ -134,20 +208,20 @@ class CheckerGame{
             this.updateOrigin();
         }
 
-
-
-
         if(board2DArray[this.boardRowIndex][this.boardColIndex] !== 0){
+
             if($(event.target).hasClass('highlightPiece')){
-                $('.row div').removeClass('highlightPiece');
-                $('.row div').removeClass('selectedToMove');
+                $('.rowOfPieces div').removeClass('highlightPiece');
+                $('.rowOfPieces div').removeClass('selectedToMove');
+                return;
             } else {
-                $('.row div').removeClass('highlightPiece');
-                $('.row div').removeClass('selectedToMove');
+                $('.rowOfPieces div').removeClass('highlightPiece');
+                $('.rowOfPieces div').removeClass('selectedToMove');
                 $(event.target).addClass('highlightPiece');
                 this.updateOrigin();
             }
         }
+
 
         if($(event.target).hasClass('player1King') || $(event.target).hasClass('player2King')){
             this.possibleMovesKing();
@@ -160,6 +234,28 @@ class CheckerGame{
         this.origin[0] = this.boardRowIndex;
         this.origin[1] = this.boardColIndex;
         this.player = board2DArray[this.boardRowIndex][this.boardColIndex];
+    }
+
+    updateDeceasedPlayerCount(enemyKilled){
+        if( board2DArray[enemyKilled[0]][enemyKilled[1]] === 1 || board2DArray[enemyKilled[0]][enemyKilled[1]] === 10){
+            this.deceasedPlayer1Count++;
+            if(this.deceasedPlayer1Count === 12){
+                $('.modalHeader').text("Player 2 is the winner");
+                $('.winnerImg').addClass('whitePiece');
+                $('.winModal').css('display', 'block');
+            }
+            let divEnemy = $('<div>').addClass('killedPlayer1Img blackPiece');
+            $('.killedPlayer1').append(divEnemy);
+        } else if(board2DArray[enemyKilled[0]][enemyKilled[1]] === 2 || board2DArray[enemyKilled[0]][enemyKilled[1]] === 20){
+            this.deceasedPlayer2Count++;
+            if(this.deceasedPlayer2Count === 12){
+                $('.winnerImg').addClass('blackPiece');
+                $('.modalHeader').text("Player 1 is the winner");
+                $('.winModal').css('display', 'block');
+            }
+            let divEnemy = $('<div>').addClass('killedPlayer2Img whitePiece');
+            $('.killedPlayer2').append(divEnemy);
+        }
     }
 
     enemyBeingKilled(){
@@ -177,13 +273,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(downRight)){
                 if(board2DArray[downRight[0]][downRight[1]] === 0){
-                    $('.row').eq(downRight[0]).children().eq(downRight[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(downRight[0]).children().eq(downRight[1]).addClass('selectedToMove');
                 }  else if(board2DArray[downRight[0]][downRight[1]] === 1){
                     // do nothing
-                } else if(board2DArray[downRight[0]][downRight[1]] === 2){
+                } else if(board2DArray[downRight[0]][downRight[1]] === 2 || board2DArray[downRight[0]][downRight[1]] === 20){
                     if(!this.isLocationOutOfBounds(downRightNext)){
                         if(board2DArray[downRightNext[0]][downRightNext[1]] === 0){
-                            $('.row').eq(downRightNext[0]).children().eq(downRightNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(downRightNext[0]).children().eq(downRightNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -192,13 +288,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(downLeft)){
                 if(board2DArray[downLeft[0]][downLeft[1]] === 0){
-                    $('.row').eq(downLeft[0]).children().eq(downLeft[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(downLeft[0]).children().eq(downLeft[1]).addClass('selectedToMove');
                 } else if(board2DArray[downLeft[0]][downLeft[1]] === 1){
                     // do nothing
-                } else if(board2DArray[downLeft[0]][downLeft[1]] === 2){
+                } else if(board2DArray[downLeft[0]][downLeft[1]] === 2 || board2DArray[downLeft[0]][downLeft[1]] === 20){
                     if(!this.isLocationOutOfBounds(downLeftNext)){
                         if(board2DArray[downLeftNext[0]][downLeftNext[1]] === 0){
-                            $('.row').eq(downLeftNext[0]).children().eq(downLeftNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(downLeftNext[0]).children().eq(downLeftNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -213,13 +309,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(upRight)){
                 if(board2DArray[upRight[0]][upRight[1]] === 0){
-                    $('.row').eq(upRight[0]).children().eq(upRight[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(upRight[0]).children().eq(upRight[1]).addClass('selectedToMove');
                 } else if(board2DArray[upRight[0]][upRight[1]] === 2){
                     // do nothing
-                } else if(board2DArray[upRight[0]][upRight[1]] === 1){
+                } else if(board2DArray[upRight[0]][upRight[1]] === 1 || board2DArray[upRight[0]][upRight[1]] === 10){
                     if(!this.isLocationOutOfBounds(upRightNext)){
                         if(board2DArray[upRightNext[0]][upRightNext[1]] === 0){
-                            $('.row').eq(upRightNext[0]).children().eq(upRightNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(upRightNext[0]).children().eq(upRightNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -228,13 +324,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(upLeft)){
                 if(board2DArray[upLeft[0]][upLeft[1]] === 0){
-                    $('.row').eq(upLeft[0]).children().eq(upLeft[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(upLeft[0]).children().eq(upLeft[1]).addClass('selectedToMove');
                 } else if(board2DArray[upLeft[0]][upLeft[1]] === 2){
                     // do nothing
-                } else if(board2DArray[upLeft[0]][upLeft[1]] === 1){
+                } else if(board2DArray[upLeft[0]][upLeft[1]] === 1 || board2DArray[upLeft[0]][upLeft[1]] === 10){
                     if(!this.isLocationOutOfBounds(upLeftNext)){
                         if(board2DArray[upLeftNext[0]][upLeftNext[1]] === 0){
-                            $('.row').eq(upLeftNext[0]).children().eq(upLeftNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(upLeftNext[0]).children().eq(upLeftNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -245,7 +341,6 @@ class CheckerGame{
     }
 
     possibleMovesKing() {
-        console.log('this is king');
         // 10 is king of player 1
         if (this.player === 10) {
             var downRight = [this.boardRowIndex + 1, this.boardColIndex + 1];
@@ -261,13 +356,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(downRight)){
                 if (board2DArray[downRight[0]][downRight[1]] === 0) {
-                    $('.row').eq(downRight[0]).children().eq(downRight[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(downRight[0]).children().eq(downRight[1]).addClass('selectedToMove');
                 } else if (board2DArray[downRight[0]][downRight[1]] === 1) {
                     // do nothing
                 } else if (board2DArray[downRight[0]][downRight[1]] === 2 || board2DArray[downRight[0]][downRight[1]] === 20) {
                     if(!this.isLocationOutOfBounds(downRightNext)){
                         if (board2DArray[downRightNext[0]][downRightNext[1]] === 0) {
-                            $('.row').eq(downRightNext[0]).children().eq(downRightNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(downRightNext[0]).children().eq(downRightNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -276,13 +371,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(downLeft)){
                 if (board2DArray[downLeft[0]][downLeft[1]] === 0) {
-                    $('.row').eq(downLeft[0]).children().eq(downLeft[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(downLeft[0]).children().eq(downLeft[1]).addClass('selectedToMove');
                 } else if (board2DArray[downLeft[0]][downLeft[1]] === 1) {
                     // do nothing
                 } else if (board2DArray[downLeft[0]][downLeft[1]] === 2 || board2DArray[downLeft[0]][downLeft[1]] === 20) {
                     if(!this.isLocationOutOfBounds(downLeftNext)){
                         if (board2DArray[downLeftNext[0]][downLeftNext[1]] === 0) {
-                            $('.row').eq(downLeftNext[0]).children().eq(downLeftNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(downLeftNext[0]).children().eq(downLeftNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -291,13 +386,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(upRight)){
                 if(board2DArray[upRight[0]][upRight[1]] === 0){
-                    $('.row').eq(upRight[0]).children().eq(upRight[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(upRight[0]).children().eq(upRight[1]).addClass('selectedToMove');
                 } else if(board2DArray[upRight[0]][upRight[1]] === 1){
                     // do nothing
                 } else if(board2DArray[upRight[0]][upRight[1]] === 2 || board2DArray[upRight[0]][upRight[1]] === 20){
                     if(!this.isLocationOutOfBounds(upRightNext)){
                         if(board2DArray[upRightNext[0]][upRightNext[1]] === 0){
-                            $('.row').eq(upRightNext[0]).children().eq(upRightNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(upRightNext[0]).children().eq(upRightNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -306,13 +401,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(upLeft)){
                 if(board2DArray[upLeft[0]][upLeft[1]] === 0){
-                    $('.row').eq(upLeft[0]).children().eq(upLeft[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(upLeft[0]).children().eq(upLeft[1]).addClass('selectedToMove');
                 } else if(board2DArray[upLeft[0]][upLeft[1]] === 1){
                     // do nothing
                 } else if(board2DArray[upLeft[0]][upLeft[1]] === 2 || board2DArray[upLeft[0]][upLeft[1]] === 20){
                     if(!this.isLocationOutOfBounds(upLeftNext)){
                         if(board2DArray[upLeftNext[0]][upLeftNext[1]] === 0){
-                            $('.row').eq(upLeftNext[0]).children().eq(upLeftNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(upLeftNext[0]).children().eq(upLeftNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -335,13 +430,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(downRight)){
                 if (board2DArray[downRight[0]][downRight[1]] === 0) {
-                    $('.row').eq(downRight[0]).children().eq(downRight[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(downRight[0]).children().eq(downRight[1]).addClass('selectedToMove');
                 } else if (board2DArray[downRight[0]][downRight[1]] === 2) {
                     // do nothing
                 } else if (board2DArray[downRight[0]][downRight[1]] === 1 || board2DArray[downRight[0]][downRight[1]] === 10) {
                     if(!this.isLocationOutOfBounds(downRightNext)){
                         if (board2DArray[downRightNext[0]][downRightNext[1]] === 0) {
-                            $('.row').eq(downRightNext[0]).children().eq(downRightNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(downRightNext[0]).children().eq(downRightNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -350,13 +445,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(downLeft)){
                 if (board2DArray[downLeft[0]][downLeft[1]] === 0) {
-                    $('.row').eq(downLeft[0]).children().eq(downLeft[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(downLeft[0]).children().eq(downLeft[1]).addClass('selectedToMove');
                 } else if (board2DArray[downLeft[0]][downLeft[1]] === 2) {
                     // do nothing
                 } else if (board2DArray[downLeft[0]][downLeft[1]] === 1 || board2DArray[downLeft[0]][downLeft[1]] === 10) {
                     if(!this.isLocationOutOfBounds(downLeftNext)){
                         if (board2DArray[downLeftNext[0]][downLeftNext[1]] === 0) {
-                            $('.row').eq(downLeftNext[0]).children().eq(downLeftNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(downLeftNext[0]).children().eq(downLeftNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -365,13 +460,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(upRight)){
                 if(board2DArray[upRight[0]][upRight[1]] === 0){
-                    $('.row').eq(upRight[0]).children().eq(upRight[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(upRight[0]).children().eq(upRight[1]).addClass('selectedToMove');
                 } else if(board2DArray[upRight[0]][upRight[1]] === 2){
                     // do nothing
                 } else if(board2DArray[upRight[0]][upRight[1]] === 1 || board2DArray[upRight[0]][upRight[1]] === 10){
                     if(!this.isLocationOutOfBounds(upRightNext)){
                         if(board2DArray[upRightNext[0]][upRightNext[1]] === 0){
-                            $('.row').eq(upRightNext[0]).children().eq(upRightNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(upRightNext[0]).children().eq(upRightNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -380,13 +475,13 @@ class CheckerGame{
 
             if(!this.isLocationOutOfBounds(upLeft)){
                 if(board2DArray[upLeft[0]][upLeft[1]] === 0){
-                    $('.row').eq(upLeft[0]).children().eq(upLeft[1]).addClass('selectedToMove');
+                    $('.rowOfPieces').eq(upLeft[0]).children().eq(upLeft[1]).addClass('selectedToMove');
                 } else if(board2DArray[upLeft[0]][upLeft[1]] === 2){
                     // do nothing
                 } else if(board2DArray[upLeft[0]][upLeft[1]] === 1 || board2DArray[upLeft[0]][upLeft[1]] === 10){
                     if(!this.isLocationOutOfBounds(upLeftNext)){
                         if(board2DArray[upLeftNext[0]][upLeftNext[1]] === 0){
-                            $('.row').eq(upLeftNext[0]).children().eq(upLeftNext[1]).addClass('selectedToMove killer');
+                            $('.rowOfPieces').eq(upLeftNext[0]).children().eq(upLeftNext[1]).addClass('selectedToMove killer');
                         }
                     }
 
@@ -399,9 +494,10 @@ class CheckerGame{
     isLocationOutOfBounds(location){
         // location = [8, 1]; // this hard code is just for testing
         var isOutOfBound = false;
-
         location.forEach(function(ele){
             if(ele > 7 || ele < 0){
+                isOutOfBound = true;
+            } else if(ele % 1 !== 0){
                 isOutOfBound = true;
             }
         });
