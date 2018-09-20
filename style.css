@@ -1,37 +1,46 @@
 .main-container{
-    height: 95vh;
-    width: 95vw;
-    border: 1px solid red;
-    margin: auto;
-    box-sizing: content-box;
-    font-size: 0;
-}
-.menu{
-    height: 15%;
-    width: 100%;
-    background-color: #0F9E5E;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    /*font-size: 0;*/
 }
 .gameArea{
-    height: 80%;
+    height: 100%;
     width: 100%;
 }
-    .gameStatus{
-        display: inline-block;
-        height: 100%;
-        width: 15%;
-        background-color: #9e2609;
-    }
-    .gameAction{
-        display: inline-block;
-        height: 100%;
-        width: 84.99%;
-        background-color: #002c9e;
-    }
-        .square{
-            display: inline-block;
-            width: 12.5%;
-            height: 100%;
-        }
+.rowOfPieces{
+    height: 12.5%;
+}
+.gameStatus{
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+    background-color: #609e3e;
+    float: left;
+}
+.player1, .player2{
+    display: inline-block;
+    width: 100%;
+    height: 50%;
+    font-size: 3rem;
+}
+.gameAction{
+    display: inline-block;
+    height: 100%;
+    width: 60%;
+    float: left;
+}
+.square{
+    display: inline-block;
+    width: 12.5%;
+    height: 100%;
+}
+ .playerStatus{
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+    background-color: #13149e;
+}
 .light{
     background-color: #9e1b0f;
 }
@@ -45,21 +54,27 @@
     background-size: contain;
     background-position: center;
 }
+.killedPlayer1, .killedPlayer2{
+    width: 100%;
+    height: 70%;
+}
+.killedPlayer1Img{
+    display: inline-block;
+    width: 20%;
+    height: 20%;
+    margin: 2px;
+}
+.killedPlayer2Img{
+    display: inline-block;
+    width: 20%;
+    height: 20%;
+    margin: 2px;
+}
 .blackPiece{
     background-image: url("images/blackPiece.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-}
-.contacts{
-    height: 5%;
-    width: 100%;
-    background-color: #f3f40a;
-}
-.row{
-    display: flex;
-    width: 100%;
-    height: 12.5%;
 }
 .highlightPiece{
     border: 2px solid #0008dd;
@@ -89,4 +104,77 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+}
+.modal-body{
+    position: relative;
+    top:20%;
+    left: 20%;
+}
+.player1Modal{
+    margin-right: 20%;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-image: url("images/blackPiece.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.player2Modal{
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-image: url("images/whitePiece.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.playerSelected{
+    border: 1px solid red;
+    animation: blink 0.5s linear infinite;
+}
+.winModal{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.51);
+}
+.innerModal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 30%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+.modalHeader{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background-color: #61DAFB;
+    border-radius: 5px 5px 0 0;
+    font-size: 4rem;
+}
+.winnerImg{
+    height: 25%;
+    margin: 10px auto -5px;
+}
+.modalBody{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+}
+.closeBtnModal{
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
 }
