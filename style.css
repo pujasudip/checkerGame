@@ -225,3 +225,35 @@
         box-shadow: 0 0 10px 5px green;
     }
 }
+@media only screen and (max-width: 800px) {
+    .gameStatus{
+        display: block;
+        height: 20%;
+        width: 100%;
+        float: none;
+    }
+    .player1, .player2{
+        width: 49%;
+        height: 100%;
+    }
+    .gameAction{
+        top: 30%;
+    }
+    .playerStatus{
+        float: none;
+        width: 100%;
+        height: 10%;
+        position: absolute;
+        top: 135%;
+    }
+}
+@media only screen and (max-width: 700px){
+    .gameAction{
+        position: relative;
+        margin-top: 10%;
+    }
+    .playerStatus{
+        position: relative;
+        margin-top: 5%;
+    }
+}
