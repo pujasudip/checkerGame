@@ -16,7 +16,6 @@ var board2DArray = [
 function initializeApp(){
     game = new CheckerGame();
     $(window).on('load',function(){
-        debugger;
         $('#choosePlayer').modal('show');
         $('.player1Modal').click(function(){
             game.currentPlayer = 0;
@@ -136,11 +135,11 @@ class CheckerGame{
             }
         }
         if(this.currentPlayer === 0){
-            $('.player1').addClass('playerSelected');
-            $('.player2').removeClass('playerSelected');
+            $('.player1Active').addClass('playerSelected');
+            $('.player2Active').removeClass('playerSelected');
         } else{
-            $('.player2').addClass('playerSelected');
-            $('.player1').removeClass('playerSelected');
+            $('.player2Active').addClass('playerSelected');
+            $('.player1Active').removeClass('playerSelected');
         }
     }
 

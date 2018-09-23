@@ -1,10 +1,14 @@
 .main-container{
-    height: 100vh;
-    width: 100vw;
+    height: 85vh;
+    width: 90vw;
     box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     /*font-size: 0;*/
 }
 .gameArea{
+    position: relative;
     height: 100%;
     width: 100%;
 }
@@ -15,8 +19,23 @@
     display: inline-block;
     height: 100%;
     width: 20%;
-    background-color: #609e3e;
     float: left;
+}
+.gameAction{
+    display: inline-block;
+    height: 85vmin;
+    width: 85vmin;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #ffcc1b;
+    box-shadow: 10px 10px 5px 2px #d4cfca;
+}
+.playerStatus{
+    display: inline-block;
+    height: 100%;
+    width: 20%;
+    float: right;
 }
 .player1, .player2{
     display: inline-block;
@@ -24,22 +43,10 @@
     height: 50%;
     font-size: 3rem;
 }
-.gameAction{
-    display: inline-block;
-    height: 100%;
-    width: 60%;
-    float: left;
-}
 .square{
     display: inline-block;
     width: 12.5%;
     height: 100%;
-}
- .playerStatus{
-    display: inline-block;
-    height: 100%;
-    width: 20%;
-    background-color: #13149e;
 }
 .light{
     background-color: #9e1b0f;
@@ -129,10 +136,6 @@
     background-size: contain;
     background-position: center;
 }
-.playerSelected{
-    border: 1px solid red;
-    animation: blink 0.5s linear infinite;
-}
 .winModal{
     display: none;
     position: absolute;
@@ -177,4 +180,48 @@
     bottom: 1%;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.header-banner{
+    position: relative;
+    text-align: center;
+}
+
+.navbar{
+    display: inline-block;
+    margin: 0;
+}
+.navItem{
+    display: inline-block;
+    cursor: pointer;
+    width: 10vw;
+    border-radius: 2px;
+    position: relative;
+    top: 50%;
+}
+.navItem:hover{
+    background-color: #ffb700;
+}
+.navItem>a{
+    text-decoration: none;
+    line-height: 2;
+}
+.navItem:hover a{
+    color: white;
+}
+.playerImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.playerSelected{
+    animation: glow 0.5s alternate infinite;
+}
+@keyframes glow {
+    0%{
+        box-shadow: 0 0 2px 2px red;
+    }
+    100%{
+        box-shadow: 0 0 10px 5px green;
+    }
 }
