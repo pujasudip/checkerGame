@@ -63,19 +63,19 @@
 }
 .killedPlayer1, .killedPlayer2{
     width: 100%;
-    height: 70%;
+    height: 60%;
 }
 .killedPlayer1Img{
     display: inline-block;
-    width: 20%;
-    height: 20%;
-    margin: 2px;
+    width: 15%;
+    height: 25%;
+    float: left;
 }
 .killedPlayer2Img{
     display: inline-block;
-    width: 20%;
-    height: 20%;
-    margin: 2px;
+    width: 15%;
+    height: 25%;
+    float: left;
 }
 .blackPiece{
     background-image: url("images/blackPiece.png");
@@ -113,12 +113,11 @@
     background-position: center;
 }
 .modal-body{
-    position: relative;
-    top:20%;
-    left: 20%;
+    display: flex;
+    justify-content: space-around;
 }
 .player1Modal{
-    margin-right: 20%;
+    margin: 0 10%;
     display: inline-block;
     width: 100px;
     height: 100px;
@@ -128,6 +127,7 @@
     background-position: center;
 }
 .player2Modal{
+    margin: 0 10%;
     display: inline-block;
     width: 100px;
     height: 100px;
