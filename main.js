@@ -43,6 +43,9 @@ function initializeApp(){
             winModal.style.display = 'none';
         }
     }
+
+    game.rulesModal();
+    game.sendMessage();
 }
 
 class CheckerGame{
@@ -502,5 +505,52 @@ class CheckerGame{
         });
 
         return isOutOfBound;
+    }
+
+    rulesModal(){
+        var rulesNav = document.getElementById('rules');
+        var closeBtn = document.getElementById('closeBtnRules');
+        var cancelBtn = document.getElementById('rulesCancelBtn');
+        var rulesModal = document.getElementById('rulesModal');
+        closeBtn.addEventListener('click', function(){
+            rulesModal.style.display = 'none';
+        });
+        cancelBtn.addEventListener('click', function(){
+            rulesModal.style.display = 'none';
+        });
+        rulesNav.addEventListener('click', function(){
+            rulesModal.style.display = 'block';
+        });
+
+        window.onclick = function(event){
+            if(event.target == rulesModal){
+                rulesModal.style.display = 'none';
+            }
+        }
+
+    }
+    sendMessage(){
+        var sendBtn = document.getElementById('sendMessage');
+        var contactToast = document.getElementById('contactToastMessage');
+        var contact = document.getElementById('contact');
+        var formModal = document.getElementById('formModal');
+
+        contact.addEventListener('click', ()=>{
+            formModal.style.display = 'block';
+        });
+
+        sendBtn.addEventListener('click', ()=>{
+            formModal.style.display = 'none';
+            contactToast.style.display = 'block';
+            setTimeout(function(){
+                contactToast.style.display = 'none';
+            }, 1000);
+        });
+
+        window.onclick = function(event){
+            if(event.target == formModal){
+                formModal.style.display = 'none';
+            }
+        }
     }
 }

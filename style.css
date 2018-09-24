@@ -225,7 +225,7 @@
         box-shadow: 0 0 10px 5px green;
     }
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 850px) {
     .gameStatus{
         display: block;
         height: 20%;
@@ -246,6 +246,11 @@
         position: absolute;
         top: 135%;
     }
+    .playerImg{
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+    }
 }
 @media only screen and (max-width: 700px){
     .gameAction{
@@ -256,4 +261,59 @@
         position: relative;
         margin-top: 5%;
     }
+    .playerImg{
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+    }
+}
+.rulesModal{
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(211, 214, 198, 0.62);
+}
+.rulesInnerModal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    height: 70%;
+    background-color: #61DAFB;
+    transform: translate(-50%, -50%);
+    overflow-x: scroll;
+    padding: 5%;
+}
+.rulesBold{
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+#closeBtnRules{
+    position: relative;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 5%;
+}
+#rulesCancelBtn{
+    width: 5vmin;
+    height: 5vmin;
+    color: white;
+    position: absolute;
+    top: 13%;
+    right: 14%;
+    border-radius: 50%;
+    background-color: orangered;
+    z-index: 2;
+    cursor: pointer;
+}
+.timesClose{
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

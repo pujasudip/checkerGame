@@ -1,0 +1,27 @@
+.formModal{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(198, 193, 188, 0.51);
+}
+.innerFormModal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fffaf5;
+}
+#contactToastMessage{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    background-color: #61DAFB;
+    border-radius: 7px;
+
+}

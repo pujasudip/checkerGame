@@ -8,6 +8,7 @@
     <script src="main.js"></script>
     <title>Checkers</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="forms.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -17,8 +18,8 @@
             <div class="navbar">
                 <ul>
                     <li class="navItem"><a>Home</a></li>
-                    <li class="navItem"><a>Rules</a></li>
-                    <li class="navItem"><a>Contact</a></li>
+                    <li class="navItem" id="rules"><a>Rules</a></li>
+                    <li class="navItem" id="contact"><a>Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -82,6 +83,51 @@
             <button type='button' class="btn btn-primary" id="cB">Start New Game</button>
         </div>
     </div>
+</div>
+<!--Rules Modal-->
+<div class="rulesModal" id="rulesModal">
+    <div id="rulesCancelBtn"><span class="timesClose">&times;</span></div>
+    <div class="rulesInnerModal">
+        <div class="rulesHeader text-center"><h3>The Basic Rules of Checkers</h3></div>
+        <div class="rules-content">
+            <span class="rulesBold">Checkers</span> is a board game played between two players, who alternate moves. The player who cannot move, because he has no pieces, or because all of his pieces are blocked, loses the game. Players can resign or agree to draws.<br>
+
+            <span class="rulesBold">The board</span> is square, with sixty-four smaller squares, arranged in an 8x8 grid. The smaller squares are alternately light and dark colored (green and buff in tournaments), in the famous "checker-board" pattern. The game of checkers is played on the dark (black or green) squares. Each player has a dark square on his far left and a light square on his far right. The double-corner is the distinctive pair of dark squares in the near right corner.<br>
+
+            <span class="rulesBold">The pieces</span> are Black and White, and are called Black and White in most books. In some modern publications, they are called Red and White. Sets bought in stores may be other colors. Black and Red pieces are still called Black (or Red) and White, so that you can read the books. The pieces are of cylindrical shape, much wider than they are tall. Tournament pieces are smooth, and have no designs (crowns or concentric circles) on them. The pieces are placed on the dark squares of the board.<br>
+
+            <span class="rulesBold">The starting position</span> is with each player having twelve pieces, on the twelve dark squares closest to his edge of the board. Notice that in checker diagrams, the pieces are placed on the light colored squares, for readability. On a real board they are on the dark squares.<br>
+
+            <span class="rulesBold">Moving:</span> A piece which is not a king can move one square, diagonally, forward. A king can move diagonally, forward or backward. A piece (piece or king) can only move to a vacant square. A move can also consist of one or more jumps (next paragraph).<br>
+
+            <span class="rulesBold">Jumping:</span> You capture an opponent's piece by jumping over it, diagonally, to the adjacent vacant square beyond it. A king can jump diagonally, forward or backward. A piece which is not a king, can only jump diagonally forward. You can make a multiple jump, with one piece only, by jumping to empty square to empty square. You can only jump one piece, with any given jump. But you can jump several pieces, with a move of several jumps. You remove the jumped pieces from the board. You cannot jump your own piece. You cannot jump the same piece twice, in the same move. If you can jump, you must. And, a multiple jump must be completed. You cannot stop part way through a multiple jump. If you have a choice of jumps, you can choose among them, regardless of whether some of them are multiple, or not. A piece, whether it is a king or not, can jump a king.<br>
+
+            <span class="rulesBold">Kinging:</span> When a piece reaches the last row (the King Row), it becomes a King. A second checker is place on top of that one, by the opponent. A piece that has just kinged, cannot continue jumping pieces, until the next move.<br>
+
+        </div>
+        <div class="btn btn-default" id="closeBtnRules">Close</div>
+    </div>
+</div>
+<!--contact modal-->
+<div class="formModal" id="formModal">
+    <div class="innerFormModal">
+        <form>
+            <div>
+                <label for="name">Your Name:</label><input name="name" id="name" type="text"/>
+            </div>
+            <div>
+                <label for="email">Your Email:</label><input name="email" id="email" type="text"/>
+            </div>
+            <div>
+                <label for="message">Message:</label><textarea name="message" id="message"></textarea>
+            </div>
+            <button type="button" id="sendMessage">Send</button>
+        </form>
+    </div>
+</div>
+<!--contact toast message-->
+<div id="contactToastMessage" class="text-center">
+    <h4>&#10003; Your message has been sent.</h4>
 </div>
 </body>
 </html>
