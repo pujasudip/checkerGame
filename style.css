@@ -1,3 +1,9 @@
+body{
+    background-image: url("images/lakeHouse.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-color: red;*/
+}
 .main-container{
     height: 85vh;
     width: 90vw;

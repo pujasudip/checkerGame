@@ -553,19 +553,65 @@ class CheckerGame{
         var contactToast = document.getElementById('contactToastMessage');
         var contact = document.getElementById('contact');
         var formModal = document.getElementById('formModal');
+        var name = document.getElementById('name');
+        var email = document.getElementById('email');
+        var message = document.getElementById('message');
+        var hasError = false;
+
+        name.addEventListener('blur', function () {
+            if(name.value === ""){
+                hasError = true;
+                $('.nameError').text('Name cannot be empty.');
+            }
+        });
+        name.addEventListener('keyup', function () {
+            if(name.value.length > 0){
+                hasError = false;
+                $('.nameError').text('');
+            }
+        });
+
+
+        email.addEventListener('blur', function () {
+            if(email.value === ""){
+                hasError = true;
+                $('.emailError').text('No email was supplied.');
+            }
+        });
+        message.addEventListener('keyup', function () {
+            if(email.value.length > 0){
+                hasError = false;
+                $('.emailError').text('');
+            }
+        });
+
+        message.addEventListener('blur', function () {
+            if(message.value === ""){
+                hasError = true;
+                $('.messageError').text('You left no message.');
+            }
+        });
+        message.addEventListener('keyup', function () {
+            if(message.value.length > 0){
+                hasError = false;
+                $('.messageError').text('');
+            }
+        });
 
         contact.addEventListener('click', ()=>{
             formModal.style.display = 'block';
         });
 
         sendBtn.addEventListener('click', ()=>{
-            formModal.style.display = 'none';
-            $('.navbar > ul > li').removeClass('menuOnFocus');
-            $('#home').addClass('menuOnFocus');
-            contactToast.style.display = 'block';
-            setTimeout(function(){
-                contactToast.style.display = 'none';
-            }, 1000);
+            if(!hasError){
+                formModal.style.display = 'none';
+                $('.navbar > ul > li').removeClass('menuOnFocus');
+                $('#home').addClass('menuOnFocus');
+                contactToast.style.display = 'block';
+                setTimeout(function(){
+                    contactToast.style.display = 'none';
+                }, 1000);
+            }
         });
 
         window.onclick = function(event){

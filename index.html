@@ -115,12 +115,15 @@
         <form>
             <div class="formLine">
                 <label for="name">Your Name:</label><input name="name" id="name" type="text" class="field"/>
+                <p class="nameError error text-center"></p>
             </div>
             <div class="formLine">
                 <label for="email">Your Email:</label><input name="email" id="email" type="text" class="field"/>
+                <p class="emailError error text-center"></p>
             </div>
             <div class="formLine">
                 <label for="message">Message:</label><textarea name="message" id="message" class="field"></textarea>
+                <p class="messageError error text-center"></p>
             </div>
             <button type="button" id="sendMessage">Send</button>
         </form>
