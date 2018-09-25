@@ -46,6 +46,8 @@ function initializeApp(){
 
     game.rulesModal();
     game.sendMessage();
+    game.setMenuActive();
+    $('#home').addClass('menuOnFocus');
 }
 
 class CheckerGame{
@@ -160,12 +162,16 @@ class CheckerGame{
         var clickedPlayer = board2DArray[this.boardRowIndex][this.boardColIndex];
 
         if(this.currentPlayer === 0 && clickedPlayer === 2){
+            this.displayNotYourTurnMessage();
             return;
         } else if (this.currentPlayer === 1 && clickedPlayer === 1) {
+            this.displayNotYourTurnMessage();
             return;
         } else if (this.currentPlayer === 0 && clickedPlayer === 20){
+            this.displayNotYourTurnMessage();
             return;
         } else if(this.currentPlayer === 1 && clickedPlayer === 10){
+            this.displayNotYourTurnMessage();
             return;
         }
 
@@ -246,7 +252,7 @@ class CheckerGame{
                 $('.winnerImg').addClass('whitePiece');
                 $('.winModal').css('display', 'block');
             }
-            let divEnemy = $('<div>').addClass('killedPlayer1Img blackPiece');
+            let divEnemy = $('<div>').addClass('killedPlayer1Img blackPieceRemoved');
             $('.killedPlayer1').append(divEnemy);
         } else if(board2DArray[enemyKilled[0]][enemyKilled[1]] === 2 || board2DArray[enemyKilled[0]][enemyKilled[1]] === 20){
             this.deceasedPlayer2Count++;
@@ -255,7 +261,7 @@ class CheckerGame{
                 $('.modalHeader').text("Player 1 is the winner");
                 $('.winModal').css('display', 'block');
             }
-            let divEnemy = $('<div>').addClass('killedPlayer2Img whitePiece');
+            let divEnemy = $('<div>').addClass('killedPlayer2Img whitePieceRemoved');
             $('.killedPlayer2').append(divEnemy);
         }
     }
@@ -492,6 +498,14 @@ class CheckerGame{
         }
     }
 
+    displayNotYourTurnMessage(){
+        var notYourTurn = document.getElementById('notYourTurnMessage');
+        notYourTurn.style.display = 'block';
+        setTimeout(function(){
+            notYourTurn.style.display = 'none';
+        }, 500);
+    };
+
     //it receives movement location and returns if exists or not
     isLocationOutOfBounds(location){
         // location = [8, 1]; // this hard code is just for testing
@@ -514,19 +528,24 @@ class CheckerGame{
         var rulesModal = document.getElementById('rulesModal');
         closeBtn.addEventListener('click', function(){
             rulesModal.style.display = 'none';
+            $('.navbar > ul > li').removeClass('menuOnFocus');
+            $('#home').addClasss('menuOnFocus');
         });
         cancelBtn.addEventListener('click', function(){
             rulesModal.style.display = 'none';
+            $('.navbar > ul > li').removeClass('menuOnFocus');
+            $('#home').addClass('menuOnFocus');
         });
         rulesNav.addEventListener('click', function(){
             rulesModal.style.display = 'block';
         });
-
-        window.onclick = function(event){
-            if(event.target == rulesModal){
+        rulesModal.addEventListener('click', function(event) {
+            if(event.target.id == 'rulesModal'){
                 rulesModal.style.display = 'none';
+                $('.navbar > ul > li').removeClass('menuOnFocus');
+                $('#home').addClass('menuOnFocus');
             }
-        }
+        })
 
     }
     sendMessage(){
@@ -541,6 +560,8 @@ class CheckerGame{
 
         sendBtn.addEventListener('click', ()=>{
             formModal.style.display = 'none';
+            $('.navbar > ul > li').removeClass('menuOnFocus');
+            $('#home').addClass('menuOnFocus');
             contactToast.style.display = 'block';
             setTimeout(function(){
                 contactToast.style.display = 'none';
@@ -550,7 +571,15 @@ class CheckerGame{
         window.onclick = function(event){
             if(event.target == formModal){
                 formModal.style.display = 'none';
+                $('.navbar > ul > li').removeClass('menuOnFocus');
+                $('#home').addClass('menuOnFocus');
             }
         }
+    }
+    setMenuActive(){
+        $('.navbar > ul > li').on('click', function(){
+            $('.navbar > ul > li').removeClass('menuOnFocus');
+            $(this).addClass('menuOnFocus');
+        });
     }
 }
