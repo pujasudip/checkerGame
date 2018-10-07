@@ -244,6 +244,33 @@ body{
         box-shadow: 0 0 10px 5px green;
     }
 }
+.playersStats{
+    height: 80%;
+    margin-left: 10%;
+}
+.statPieceContainer{
+    display: flex;
+    justify-content: center;
+}
+.player1Stat{
+    height: 50%;
+}
+.player2Stat{
+    height: 50%;
+}
+.whitePieceStat{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
+.blackPieceStat{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
+.statPara{
+    color: green;
+}
 @media only screen and (max-width: 850px) {
     .gameStatus{
         display: block;
@@ -353,6 +380,12 @@ body{
 }
 #notYourTurnMessage p {
     margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.newGame{
     position: absolute;
     top: 50%;
     left: 50%;

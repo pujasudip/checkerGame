@@ -15,34 +15,34 @@ var board2DArray = [
 
 function initializeApp(){
     game = new CheckerGame();
+    game.updateFromLocalStorage();
     $(window).on('load',function(){
+        $('#rulesModal').css('display', 'block');
+    });
+
+    $('.newGame').on('click', function(){
+        $('.gameAction').empty();
         $('#choosePlayer').modal('show');
-        $('.player1Modal').click(function(){
+        $('.player1Modal').click(function () {
             game.currentPlayer = 0;
             game.startUp();
         });
-        $('.player2Modal').click(function(){
+        $('.player2Modal').click(function () {
             game.currentPlayer = 1;
             game.startUp();
-        })
+        });
     });
     $('.resetGame').click(()=>{
         game.resetGame();
     });
-    window.onclick = function(event){
-        // var winModal = document.getElementsByClassName('winModal');
-        var winModal = document.getElementById('wM');
-        var closeBtn = document.getElementById('cB');
-        //this is for backdrop or close button
-        // if(event.target == winModal || event.target == closeBtn){
-        //     winModal.style.display = 'none';
-        // }
-        //this is for just close button, will do nothing if backdrop is clicked
-        if(event.target == closeBtn){
-            game.resetGame();
-            winModal.style.display = 'none';
-        }
-    }
+
+    var winModal = $('#wM');
+    var startBtn = $('#startBtn');
+
+    startBtn.click(function(){
+        winModal.css('display', 'none');
+        game.resetGame();
+    });
 
     game.rulesModal();
     game.sendMessage();
@@ -61,12 +61,58 @@ class CheckerGame{
         this.deceasedPlayer2Count = 0;
         this.currentPlayer = 1;
         this.playerChips = ['blackPiece', 'whitePiece'];
+        this.wWon = 0;
+        this.wLost = 0;
+        this.bWon = 0;
+        this.bLost = 0;
+        this.totalPlayed = 0;
     }
 
     startUp(){
         this.buildGameBoard();
         this.populateChips();
         this.applyClickHandlers();
+        this.updateFromLocalStorage();
+    }
+
+    updateFromLocalStorage(){
+        if(localStorage.stats){
+            var stats = JSON.parse(localStorage.stats);
+            this.wWon = stats.wWon;
+            this.wLost = stats.wLost;
+            this.bWon = stats.bWon;
+            this.bLost = stats.bLost;
+        }
+
+        let wRatio = 0;
+
+        $('.wWon').text(this.wWon);
+        $('.bLost').text(this.bLost);
+        $('.wTotalPlayed').text(this.wWon + this.wLost);
+
+        if(this.wWon === 0 && this.wLost === 0){
+            wRatio = '0.00';
+        } else if(this.wWon !== 0 && this.wLost === 0){
+            wRatio = '100.00';
+        } else {
+            wRatio = ((this.wWon / (this.wWon + this.wLost)) * 100).toFixed(2);
+        }
+        $('.wRatio').text(wRatio);
+
+        $('.bWon').text(this.bWon);
+        $('.wLost').text(this.wLost);
+        $('.bTotalPlayed').text(this.bWon + this.bLost);
+
+        let bRatio = 0;
+
+        if(this.bWon === 0 && this.bLost === 0){
+            bRatio = '0.00';
+        } else if(this.bWon !== 0 && this.bLost === 0){
+            bRatio = '100.00';
+        } else {
+            bRatio = ((this.bWon / (this.bWon + this.bLost)) * 100).toFixed(2);
+        }
+        $('.bRatio').text(bRatio);
     }
 
     resetGlobalVariables(){
@@ -115,6 +161,7 @@ class CheckerGame{
             $('.gameAction').append(outerDiv);
             colorIndex = 1 - colorIndex;
         }
+        $('.newGame').css('display', 'none');
     }
 
     populateChips(){
@@ -251,6 +298,23 @@ class CheckerGame{
                 $('.modalHeader').text("Player 2 is the winner");
                 $('.winnerImg').addClass('whitePiece');
                 $('.winModal').css('display', 'block');
+                this.wWon++;
+                this.bLost++;
+                this.totalPlayed++;
+                $('.wWon').text(this.wWon);
+                $('.bLost').text(this.bLost);
+                $('.wTotalPlayed').text(this.totalPlayed);
+                $('.bTotalPlayed').text(this.totalPlayed);
+                let ratio = ((this.wWon / (this.wWon + this.wLost)) * 100).toFixed(2);
+                $('.wRatio').text(ratio);
+                $('.bRatio').text(100 - ratio);
+                var stats = {
+                    "wWon": this.wWon,
+                    "wLost": this.wLost,
+                    "bWon": this.bWon,
+                    "bLost": this.bLost
+                };
+                localStorage.setItem('stats', JSON.stringify(stats));
             }
             let divEnemy = $('<div>').addClass('killedPlayer1Img blackPieceRemoved');
             $('.killedPlayer1').append(divEnemy);
@@ -260,6 +324,23 @@ class CheckerGame{
                 $('.winnerImg').addClass('blackPiece');
                 $('.modalHeader').text("Player 1 is the winner");
                 $('.winModal').css('display', 'block');
+                this.bWon++;
+                this.wLost++;
+                this.totalPlayed++;
+                $('.bWon').text(this.bWon);
+                $('.wLost').text(this.wLost);
+                $('.bTotalPlayed').text(this.totalPlayed);
+                $('.wTotalPlayed').text(this.totalPlayed);
+                let ratio = ((this.bWon / (this.bWon + this.bLost)) * 100).toFixed(2);
+                $('.bRatio').text(ratio);
+                $('.wRatio').text(100 - ratio);
+                var stats = {
+                    "wWon": this.wWon,
+                    "wLost": this.wLost,
+                    "bWon": this.bWon,
+                    "bLost": this.bLost
+                };
+                localStorage.setItem('stats', JSON.stringify(stats));
             }
             let divEnemy = $('<div>').addClass('killedPlayer2Img whitePieceRemoved');
             $('.killedPlayer2').append(divEnemy);
