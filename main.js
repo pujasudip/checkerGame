@@ -690,6 +690,9 @@ class CheckerGame{
 
         contact.addEventListener('click', ()=>{
             formModal.style.display = 'block';
+            $('.nameError').text('');
+            $('.emailError').text('');
+            $('.messageError').text('');
         });
 
         sendBtn.addEventListener('click', ()=>{
