@@ -1,8 +1,8 @@
 body{
-    background-image: url("images/lakeHouse.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    /*background-color: red;*/
+    /*background-image: url("images/beach.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    background-color: #ebebeb;
 }
 .main-container{
     height: 85vh;
@@ -239,10 +239,45 @@ body{
 @keyframes glow {
     0%{
         box-shadow: 0 0 2px 2px red;
+        background-color: red;
     }
     100%{
         box-shadow: 0 0 10px 5px green;
+        background-color: green;
     }
+}
+.playersStats{
+    height: 80%;
+    margin-left: 10%;
+}
+.statPieceContainer{
+    display: flex;
+    justify-content: center;
+}
+.player1Stat{
+    height: 50%;
+}
+.player2Stat{
+    height: 50%;
+}
+.whitePieceStat{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
+.blackPieceStat{
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
+.statPara{
+    color: green;
+}
+.lineSeparator{
+    display: inline-block;
+    height: 2px;
+    width: 100%;
+    background-color: red;
 }
 @media only screen and (max-width: 850px) {
     .gameStatus{
@@ -270,6 +305,20 @@ body{
         height: 45px;
         border-radius: 50%;
     }
+    .player1Stat{
+        width: 48%;
+        display: inline-block;
+    }
+    .player2Stat{
+        width: 48%;
+        display: inline-block;
+    }
+    .lineSeparator{
+        display: inline-block;
+        height: 150px;
+        width: 2px;
+        background-color: red;
+    }
 }
 @media only screen and (max-width: 700px){
     .gameAction{
@@ -284,6 +333,20 @@ body{
         width: 25px;
         height: 25px;
         border-radius: 50%;
+    }
+    .player1Stat{
+        width: 48%;
+        display: inline-block;
+    }
+    .player2Stat{
+        width: 48%;
+        display: inline-block;
+    }
+    .lineSeparator{
+        display: inline-block;
+        height: 150px;
+        width: 2px;
+        background-color: red;
     }
 }
 .rulesModal{
@@ -353,6 +416,12 @@ body{
 }
 #notYourTurnMessage p {
     margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.newGame{
     position: absolute;
     top: 50%;
     left: 50%;

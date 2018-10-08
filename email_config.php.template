@@ -1,0 +1,4 @@
+<?php
+define('EMAIL_USER','<Your Email>');
+define('EMAIL_PASS','<Your password>');
+?>
