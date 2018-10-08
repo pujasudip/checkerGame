@@ -10,7 +10,7 @@
     top: 50%;
     left: 50%;
     width: 40%;
-    height: 50%;
+    height: 70%;
     transform: translate(-50%, -50%);
     background-color: #e0e9ff;
     padding: 5%;
@@ -41,7 +41,7 @@
     margin-bottom: 10px;
 }
 #sendMessage{
-    position: relative;
+    position: absolute;
     bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
@@ -58,6 +58,12 @@
     margin: -10% auto 10px;
     font-size: 3vw;
 }
+.messageError{
+    margin-top: 10%;
+}
+.formContainer{
+    margin-top: 20%;
+}
 @media only screen and (max-width: 850px){
     label{
         display: block;
@@ -73,6 +79,9 @@
     #sendMessage{
         position: absolute;
         bottom: 5%;
+    }
+    .innerFormModal{
+        height: 70%;
     }
 }
 .error{

@@ -57,6 +57,7 @@
                     <p>Total Played: <span class="statPara wTotalPlayed">0</span></p>
                     <p>W/L Ratio: <span class="statPara wRatio">0</span>%</p>
                 </div>
+                <div class="lineSeparator"></div>
                 <div class="player2Stat">
                     <div class="statPieceContainer">
                         <div class="blackPieceStat blackPiece"></div>
@@ -135,22 +136,24 @@
 <!--contact modal-->
 <div class="formModal" id="formModal">
     <div class="innerFormModal">
-        <p class="formHeader text-center">Contact Form</p>
-        <form>
-            <div class="formLine">
-                <label for="name">Your Name:</label><input name="name" id="name" type="text" class="field"/>
-                <p class="nameError error text-center"></p>
-            </div>
-            <div class="formLine">
-                <label for="email">Your Email:</label><input name="email" id="email" type="text" class="field"/>
-                <p class="emailError error text-center"></p>
-            </div>
-            <div class="formLine">
-                <label for="message">Message:</label><textarea name="message" id="message" class="field"></textarea>
-                <p class="messageError error text-center"></p>
-            </div>
-            <button type="button" id="sendMessage">Send</button>
-        </form>
+        <div class="formContainer">
+            <p class="formHeader text-center">Contact Form</p>
+            <form id="formData">
+                <div class="formLine">
+                    <label for="name">Your Name:</label><input name="name" id="name" type="text" class="field"/>
+                    <p class="nameError error text-center"></p>
+                </div>
+                <div class="formLine">
+                    <label for="email">Your Email:</label><input name="email" id="email" type="text" class="field"/>
+                    <p class="emailError error text-center"></p>
+                </div>
+                <div class="formLine">
+                    <label for="message">Message:</label><textarea name="message" id="message" class="field"></textarea>
+                    <p class="messageError error text-center"></p>
+                </div>
+                <button type="button" id="sendMessage">Send</button>
+            </form>
+        </div>
     </div>
 </div>
 <!--contact toast message-->

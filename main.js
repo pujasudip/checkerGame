@@ -44,6 +44,8 @@ function initializeApp(){
         game.resetGame();
     });
 
+    $('#sendMessage').click(game.sendMessage);
+
     game.rulesModal();
     game.sendMessage();
     game.setMenuActive();
@@ -253,9 +255,17 @@ class CheckerGame{
                 $('.rowOfPieces div').removeClass('selectedToMove');
 
                 this.currentPlayer = 1 - this.currentPlayer;
+
                 this.populateChips();
                 this.resetGlobalVariables();
                 return;
+
+                // let killer = $('.killer');
+                // if(killer.length === 0){
+                //     this.currentPlayer = 1 - this.currentPlayer;
+                //     this.resetGlobalVariables();
+                //     return;
+                // }
             }
         }
 
@@ -307,7 +317,7 @@ class CheckerGame{
                 $('.bTotalPlayed').text(this.totalPlayed);
                 let ratio = ((this.wWon / (this.wWon + this.wLost)) * 100).toFixed(2);
                 $('.wRatio').text(ratio);
-                $('.bRatio').text(100 - ratio);
+                $('.bRatio').text((100 - ratio).toFixed(2));
                 var stats = {
                     "wWon": this.wWon,
                     "wLost": this.wLost,
@@ -333,7 +343,7 @@ class CheckerGame{
                 $('.wTotalPlayed').text(this.totalPlayed);
                 let ratio = ((this.bWon / (this.bWon + this.bLost)) * 100).toFixed(2);
                 $('.bRatio').text(ratio);
-                $('.wRatio').text(100 - ratio);
+                $('.wRatio').text((100 - ratio).toFixed(2));
                 var stats = {
                     "wWon": this.wWon,
                     "wLost": this.wLost,
@@ -652,7 +662,6 @@ class CheckerGame{
             }
         });
 
-
         email.addEventListener('blur', function () {
             if(email.value === ""){
                 hasError = true;
@@ -684,6 +693,19 @@ class CheckerGame{
         });
 
         sendBtn.addEventListener('click', ()=>{
+            if(document.getElementById('name').value.length === 0){
+                hasError = true;
+                $('.nameError').text('Name cannot be empty.');
+            }
+            if (document.getElementById('email').value.length === 0){
+                hasError = true;
+                $('.emailError').text('No email was supplied.');
+            }
+            if (document.getElementById('message').value.length === 0){
+                hasError = true;
+                $('.messageError').text('You left no message.');
+            }
+
             if(!hasError){
                 formModal.style.display = 'none';
                 $('.navbar > ul > li').removeClass('menuOnFocus');
@@ -692,6 +714,23 @@ class CheckerGame{
                 setTimeout(function(){
                     contactToast.style.display = 'none';
                 }, 1000);
+
+                var data = $('#formData').serialize();
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+
+                $.ajax({
+                    data: data,
+                    method: 'post',
+                    url: 'contact.php',
+                    success: function(){
+                        console.log('success');
+                    },
+                    error: function(){
+                        console.log('failed');
+                    }
+                });
             }
         });
 
