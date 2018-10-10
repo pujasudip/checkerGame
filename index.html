@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="main.js"></script>
@@ -26,14 +26,33 @@
         </div>
     </div>
     <div class="gameArea">
-        <div class="gameStatus">
+        <div class="gameStatusPlayer1">
             <div class="player1">
                 <div class="playerImg blackPiece center-block player1Active"></div>
                 <div class="killedPlayer2"></div>
             </div>
-            <div class="player2">
-                <div class="playerImg whitePiece center-block player2Active"></div>
-                <div class="killedPlayer1"></div>
+            <div class="player1Stat">
+                <table>
+                    <tr>
+                        <th class="statHeader" colspan="2">Statistics</th>
+                    </tr>
+                    <tr>
+                        <td>Won:</td>
+                        <td class="statPara bWon">0</td>
+                    </tr>
+                    <tr>
+                        <td>Lost:</td>
+                        <td class="statPara bLost">0</td>
+                    </tr>
+                    <tr>
+                        <td>Total Played:</td>
+                        <td class="statPara bTotalPlayed">0</td>
+                    </tr>
+                    <tr>
+                        <td>W/L Ratio:</td>
+                        <td class="statPara bRatio">0</td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="gameAction">
@@ -41,31 +60,33 @@
                 <button class="btn btn-primary">Start A New Game</button>
             </div>
         </div>
-        <div class="playerStatus">
-            <div class="playersStats">
-                <h2 class="text-center">Stats</h2>
-                <div class="player1Stat">
-                    <div class="statPieceContainer">
-                        <div class="whitePieceStat whitePiece"></div>
-                    </div>
-
-                    <hr>
-                    <p>Won: <span class="statPara wWon">0</span></p>
-                    <p>Lost: <span class="statPara wLost">0</span></p>
-                    <p>Total Played: <span class="statPara wTotalPlayed">0</span></p>
-                    <p>W/L Ratio: <span class="statPara wRatio">0</span>%</p>
-                </div>
-                <div class="lineSeparator"></div>
-                <div class="player2Stat">
-                    <div class="statPieceContainer">
-                        <div class="blackPieceStat blackPiece"></div>
-                    </div>
-                    <hr>
-                    <p>Won: <span class="statPara bWon">0</span></p>
-                    <p>Lost: <span class="statPara bLost">0</span></p>
-                    <p>Total Played: <span class="statPara bTotalPlayed">0</span></p>
-                    <p>W/L Ratio: <span class="statPara bRatio">0</span>%</p>
-                </div>
+        <div class="gameStatusPlayer2">
+            <div class="player2">
+                <div class="playerImg whitePiece center-block player2Active"></div>
+                <div class="killedPlayer1"></div>
+            </div>
+            <div class="player2Stat">
+                <table>
+                    <tr>
+                        <th class="statHeader" colspan="2">Statistics</th>
+                    </tr>
+                    <tr>
+                        <td>Won:</td>
+                        <td class="statPara bWon">0</td>
+                    </tr>
+                    <tr>
+                        <td>Lost:</td>
+                        <td class="statPara bLost">0</td>
+                    </tr>
+                    <tr>
+                        <td>Total Played:</td>
+                        <td class="statPara bTotalPlayed">0</td>
+                    </tr>
+                    <tr>
+                        <td>W/L Ratio:</td>
+                        <td class="statPara bRatio">0</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
@@ -76,7 +97,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">CHOOSE PLAYER</h5>
+                <h4 class="modal-title">CHOOSE PLAYER</h4>
             </div>
             <div class="modal-body">
                 <div class="player1Modal" data-dismiss="modal">
@@ -87,11 +108,32 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <p>Thank you.</p>
+                <p>Click on one of the piece you want to play.</p>
             </div>
         </div>
     </div>
 </div>
+
+<!--reset game-->
+<div class="modal fade" id="resetGame" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">CHOOSE PLAYER</h5>
+            </div>
+            <div class="modal-body">
+                <div class="player1Modal" data-dismiss="modal">
+                </div>
+                <div class="player2Modal" data-dismiss="modal">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="resetCancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--win modal-->
 <div id="wM" class="winModal">
     <div class="innerModal">

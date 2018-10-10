@@ -21,11 +21,17 @@ body{
 .rowOfPieces{
     height: 12.5%;
 }
-.gameStatus{
+.gameStatusPlayer1{
     display: inline-block;
     height: 100%;
     width: 15%;
     float: left;
+}
+.gameStatusPlayer2{
+    display: inline-block;
+    height: 100%;
+    width: 15%;
+    float: right;
 }
 .gameAction{
     display: inline-block;
@@ -36,12 +42,6 @@ body{
     transform: translateX(-50%);
     border: 2px solid #ffcc1b;
     box-shadow: 10px 10px 5px 2px #d4cfca;
-}
-.playerStatus{
-    display: inline-block;
-    height: 100%;
-    width: 15%;
-    float: right;
 }
 .player1, .player2{
     display: inline-block;
@@ -216,10 +216,11 @@ body{
     border-radius: 2px;
     position: relative;
     top: 50%;
-    border: 1px solid rgba(229, 194, 59, 0.57);
+    border: 1px solid rgba(8, 28, 229, 0.5);
 }
 .navItem:hover{
-    background-color: rgba(229, 194, 59, 0.57);
+    background-color: rgba(11, 0, 180, 0.34);
+    border:none;
 }
 .navItem>a{
     text-decoration: none;
@@ -255,134 +256,146 @@ body{
     justify-content: center;
 }
 .player1Stat{
-    height: 50%;
+    position: absolute;
+    bottom: 0;
 }
 .player2Stat{
-    height: 50%;
-}
-.whitePieceStat{
-    display: inline-block;
-    height: 30px;
-    width: 30px;
-}
-.blackPieceStat{
-    display: inline-block;
-    height: 30px;
-    width: 30px;
+    position: absolute;
+    bottom: 0;
 }
 .statPara{
     color: green;
+    text-align: right;
 }
-.lineSeparator{
-    display: inline-block;
-    height: 2px;
-    width: 100%;
-    background-color: red;
+.statHeader{
+    text-align: center;
+    text-decoration: underline;
 }
-@media only screen and (max-width: 850px) {
-    .gameArea{
-        height: 80%;
-    }
-    .killedPlayer1Img, .killedPlayer2Img{
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .killedPlayer1Img{
-        display: block;
-        width: 45%;
-        height: 15%;
-        float: none;
-    }
-    .killedPlayer2Img{
-        display: block;
-        width: 45%;
-        height: 15%;
-        float: none;
-    }
-    .player1{
-        position: absolute;
-        left: 0;
-        display: inline-block;
-        width: 15%;
-        height: 100%;
-        float: left;
-    }
-    .player2{
-        position: absolute;
-        right: 0;
-        display: inline-block;
-        width: 15%;
-        height: 100%;
-        float: right;
-    }
-    .gameAction{
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 65vmin;
-        width: 65vmin;
-    }
-    .playerStatus{
-        float: none;
-        width: 100%;
-        height: 10%;
-    }
-    .playerImg{
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-    }
-    .player1Stat{
-        width: 48%;
-        display: inline-block;
-    }
-    .player2Stat{
-        width: 48%;
-        display: inline-block;
-    }
-    .lineSeparator{
-        display: inline-block;
-        height: 150px;
-        width: 2px;
-        background-color: red;
-    }
+.killedPlayer1Img{
+    margin: 5%;
 }
-@media only screen and (max-width: 700px){
-    .navItem{
-        font-size: 1rem;
-    }
-    .gameAction{
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 65vmin;
-        width: 65vmin;
-    }
-    .playerStatus{
-        position: relative;
-        margin-top: 5%;
-    }
-    .playerImg{
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-    }
-    .player1Stat{
-        width: 48%;
-        display: inline-block;
-    }
-    .player2Stat{
-        width: 48%;
-        display: inline-block;
-    }
-    .lineSeparator{
-        display: inline-block;
-        height: 150px;
-        width: 2px;
-        background-color: red;
-    }
+.killedPlayer2Img{
+    margin: 5%;
 }
+#choosePlayer{
+    background-color: rgba(240, 240, 240, 0.61);
+}
+.modal-content{
+    background-color: #fdffe0;
+    border-radius: 10px;
+}
+.modal-header{
+    background-color: rgba(85, 249, 251, 0.85);
+    border-radius: 10px 10px 0 0;
+}
+.modal-footer{
+    background-color: rgba(85, 249, 251, 0.85);
+    border-radius: 0 0 10px 10px;
+}
+/*@media only screen and (max-width: 850px) {*/
+    /*.gameArea{*/
+        /*height: 80%;*/
+    /*}*/
+    /*.killedPlayer1Img, .killedPlayer2Img{*/
+        /*position: relative;*/
+        /*left: 50%;*/
+        /*transform: translateX(-50%);*/
+    /*}*/
+    /*.killedPlayer1Img{*/
+        /*display: block;*/
+        /*width: 45%;*/
+        /*height: 15%;*/
+        /*float: none;*/
+    /*}*/
+    /*.killedPlayer2Img{*/
+        /*display: block;*/
+        /*width: 45%;*/
+        /*height: 15%;*/
+        /*float: none;*/
+    /*}*/
+    /*.player1{*/
+        /*position: absolute;*/
+        /*left: 0;*/
+        /*display: inline-block;*/
+        /*width: 15%;*/
+        /*height: 100%;*/
+        /*float: left;*/
+    /*}*/
+    /*.player2{*/
+        /*position: absolute;*/
+        /*right: 0;*/
+        /*display: inline-block;*/
+        /*width: 15%;*/
+        /*height: 100%;*/
+        /*float: right;*/
+    /*}*/
+    /*.gameAction{*/
+        /*position: absolute;*/
+        /*left: 50%;*/
+        /*transform: translateX(-50%);*/
+        /*height: 65vmin;*/
+        /*width: 65vmin;*/
+    /*}*/
+    /*.playerStatus{*/
+        /*float: none;*/
+        /*width: 100%;*/
+        /*height: 10%;*/
+    /*}*/
+    /*.playerImg{*/
+        /*width: 45px;*/
+        /*height: 45px;*/
+        /*border-radius: 50%;*/
+    /*}*/
+    /*.player1Stat{*/
+        /*width: 48%;*/
+        /*display: inline-block;*/
+    /*}*/
+    /*.player2Stat{*/
+        /*width: 48%;*/
+        /*display: inline-block;*/
+    /*}*/
+    /*.lineSeparator{*/
+        /*display: inline-block;*/
+        /*height: 150px;*/
+        /*width: 2px;*/
+        /*background-color: red;*/
+    /*}*/
+/*}*/
+/*@media only screen and (max-width: 700px){*/
+    /*.navItem{*/
+        /*font-size: 1rem;*/
+    /*}*/
+    /*.gameAction{*/
+        /*position: absolute;*/
+        /*left: 50%;*/
+        /*transform: translateX(-50%);*/
+        /*height: 65vmin;*/
+        /*width: 65vmin;*/
+    /*}*/
+    /*.playerStatus{*/
+        /*position: relative;*/
+        /*margin-top: 5%;*/
+    /*}*/
+    /*.playerImg{*/
+        /*width: 25px;*/
+        /*height: 25px;*/
+        /*border-radius: 50%;*/
+    /*}*/
+    /*.player1Stat{*/
+        /*width: 48%;*/
+        /*display: inline-block;*/
+    /*}*/
+    /*.player2Stat{*/
+        /*width: 48%;*/
+        /*display: inline-block;*/
+    /*}*/
+    /*.lineSeparator{*/
+        /*display: inline-block;*/
+        /*height: 150px;*/
+        /*width: 2px;*/
+        /*background-color: red;*/
+    /*}*/
+/*}*/
 .rulesModal{
     display: none;
     position: absolute;
@@ -434,16 +447,19 @@ body{
     transform: translate(-50%, -50%);
 }
 .menuOnFocus{
-    background-color: #ffb700;
+    background-color: rgba(11, 0, 180, 0.57);
+}
+.menuOnFocus > a{
     color: white;
 }
+
 #notYourTurnMessage{
     display: none;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%);
-    width: 21%;
+    width: 30%;
     height: 5%;
     background-color: #6effec;
     border-radius: 3px;
@@ -461,14 +477,14 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
 }
-@media only screen and (min-width: 1150px) {
-    .gameStatus{
-        width: 25%;
-    }
-    .playerStatus{
-        width: 25%;
-    }
-}
+/*@media only screen and (min-width: 1150px) {*/
+    /*.gameStatus{*/
+        /*width: 25%;*/
+    /*}*/
+    /*.playerStatus{*/
+        /*width: 25%;*/
+    /*}*/
+/*}*/
 ul{
     padding: 0;
     margin-top: 10px;

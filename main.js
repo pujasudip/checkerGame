@@ -41,7 +41,7 @@ function initializeApp(){
 
     startBtn.click(function(){
         winModal.css('display', 'none');
-        game.resetGame();
+        game.startNewGame();
     });
 
     $('#sendMessage').click(game.sendMessage);
@@ -54,6 +54,7 @@ function initializeApp(){
 
 class CheckerGame{
     constructor(){
+        //player is from the matrix 1&10 - player 1 and 2&20 is player 2
         this.player = '';
         this.boardRowIndex = '';
         this.boardColIndex = '';
@@ -68,6 +69,8 @@ class CheckerGame{
         this.bWon = 0;
         this.bLost = 0;
         this.totalPlayed = 0;
+        this.justMovedTo = [];
+        this.justCapturedOneOrMore = false;
     }
 
     startUp(){
@@ -108,13 +111,13 @@ class CheckerGame{
         let bRatio = 0;
 
         if(this.bWon === 0 && this.bLost === 0){
-            bRatio = '0.00';
+            bRatio = '0.00%';
         } else if(this.bWon !== 0 && this.bLost === 0){
-            bRatio = '100.00';
+            bRatio = '100.00%';
         } else {
             bRatio = ((this.bWon / (this.bWon + this.bLost)) * 100).toFixed(2);
         }
-        $('.bRatio').text(bRatio);
+        $('.bRatio').text(bRatio + '%');
     }
 
     resetGlobalVariables(){
@@ -124,7 +127,7 @@ class CheckerGame{
         this.player = '';
     }
 
-    resetGame(){
+    startNewGame(currentPlayerArg){
         this.resetGlobalVariables();
         $('.killedPlayer1').empty();
         $('.killedPlayer2').empty();
@@ -141,12 +144,39 @@ class CheckerGame{
         ];
         this.deceasedPlayer1Count = 0;
         this.deceasedPlayer2Count = 0;
-        $('#choosePlayer').modal('show');
+        this.buildGameBoard();
+        this.populateChips();
+        this.applyClickHandlers();
+
+        if(currentPlayerArg){
+            this.currentPlayer = currentPlayerArg;
+        } else {
+            $('#choosePlayer').modal('show');
+            $('.player1Modal').click(() => {
+                this.currentPlayer = 0;
+            });
+            $('.player2Modal').click(() => {
+                this.currentPlayer = 1;
+            });
+        }
+    }
+
+    resetGame(){
+        if($('.gameAction').find('Button').length === 1){
+            return;
+        }
+
+        $('#resetGame').modal('show');
+        $('#resetCancel').click(function(){
+            $('#resetGame').modal('hide');
+        });
         $('.player1Modal').click(() => {
             this.currentPlayer = 0;
+            this.startNewGame(this.currentPlayer);
         });
         $('.player2Modal').click(() => {
             this.currentPlayer = 1;
+            this.startNewGame(this.currentPlayer);
         });
     }
 
@@ -168,8 +198,27 @@ class CheckerGame{
 
     populateChips(){
         var rowsInGameBoard = $('.gameAction > .rowOfPieces');
+
+        // var squares = $('.square');
+        // $(squares).animate({
+        //     width: '0px',
+        //     height: '0px'
+        // }, 1);
+
+        // for(let i = 0; i < squares.length; i++){
+        //     (function(){setTimeout(function(){
+        //         $(squares[i]).animate({
+        //             width: '12.5%',
+        //             height: '100%'
+        //         }, 10000);
+        //     }, 10000)})(i);
+
+
+        // }
+
         for(var i = 0; i < board2DArray.length; i++){
             var row = rowsInGameBoard.eq(i);
+
             for(var j = 0; j < board2DArray[i].length; j++){
                 if(board2DArray[i][j] === 1){
                     row.children().eq(j).addClass('blackPiece');
@@ -234,12 +283,15 @@ class CheckerGame{
         if($(event.target).hasClass('selectedToMove')){
             if(board2DArray[this.boardRowIndex][this.boardColIndex] === 0){
                 board2DArray[this.boardRowIndex][this.boardColIndex] = this.player;
+                this.justMovedTo = [this.boardRowIndex, this.boardColIndex];
+                debugger;
                 board2DArray[this.origin[0]][this.origin[1]] = 0;
                 if($(event.target).hasClass('killer')){
                     var enemyKilled = this.enemyBeingKilled();
                     if(!this.isLocationOutOfBounds(enemyKilled)){
                         this.updateDeceasedPlayerCount(enemyKilled);
                         board2DArray[enemyKilled[0]][enemyKilled[1]] = 0;
+                        this.justCapturedOneOrMore = true;
                     }
                     $('.rowOfPieces div').removeClass('killer');
                 }
@@ -254,7 +306,22 @@ class CheckerGame{
                 $('.rowOfPieces div').removeClass('highlightPiece');
                 $('.rowOfPieces div').removeClass('selectedToMove');
 
-                this.currentPlayer = 1 - this.currentPlayer;
+                if(this.justCapturedOneOrMore){
+                    this.checkForMultipleJumps();
+                    var killer = $('.killer');
+                    if(killer.length > 0){
+                        this.updateOrigin();
+                        this.populateChips();
+                        return;
+                    } else {
+                        this.currentPlayer = 1 - this.currentPlayer;
+                        this.justCapturedOneOrMore = false;
+                    }
+
+                } else {
+                    this.currentPlayer = 1 - this.currentPlayer;
+                    this.justCapturedOneOrMore = false;
+                }
 
                 this.populateChips();
                 this.resetGlobalVariables();
@@ -293,6 +360,71 @@ class CheckerGame{
         } else {
             this.possibleMovesNormalPiece();
         }
+    }
+
+    checkForMultipleJumps(){
+        if(this.justMovedTo.length !== 0){
+            debugger;
+            this.boardRowIndex = this.justMovedTo[0];
+            this.boardColIndex = this.justMovedTo[1];
+
+            if(this.player === 1){
+                var downRight = [this.boardRowIndex + 1, this.boardColIndex + 1];
+                var downRightNext = [this.boardRowIndex + 2, this.boardColIndex + 2];
+                var downLeft = [this.boardRowIndex + 1, this.boardColIndex - 1];
+                var downLeftNext = [this.boardRowIndex + 2, this.boardColIndex - 2];
+
+                if(!this.isLocationOutOfBounds(downRight)){
+                    if(board2DArray[downRight[0]][downRight[1]] === 2 || board2DArray[downRight[0]][downRight[1]] === 20){
+                        if(!this.isLocationOutOfBounds(downRightNext)){
+                            if(board2DArray[downRightNext[0]][downRightNext[1]] === 0){
+                                $('.rowOfPieces').eq(downRightNext[0]).children().eq(downRightNext[1]).addClass('selectedToMove killer');
+                            }
+                        }
+
+                    }
+                }
+                if(!this.isLocationOutOfBounds(downLeft)){
+                    if(board2DArray[downLeft[0]][downLeft[1]] === 2 || board2DArray[downLeft[0]][downLeft[1]] === 20){
+                        if(!this.isLocationOutOfBounds(downLeftNext)){
+                            if(board2DArray[downLeftNext[0]][downLeftNext[1]] === 0){
+                                $('.rowOfPieces').eq(downLeftNext[0]).children().eq(downLeftNext[1]).addClass('selectedToMove killer');
+                            }
+                        }
+
+                    }
+                }
+            } else if(this.player === 2){
+                var upRight = [this.boardRowIndex - 1, this.boardColIndex + 1];
+                var upRightNext = [this.boardRowIndex - 2, this.boardColIndex + 2];
+                var upLeft = [this.boardRowIndex - 1, this.boardColIndex - 1];
+                var upLeftNext = [this.boardRowIndex - 2, this.boardColIndex - 2];
+
+                if(!this.isLocationOutOfBounds(upRight)){
+                  if(board2DArray[upRight[0]][upRight[1]] === 1 || board2DArray[upRight[0]][upRight[1]] === 10){
+                        if(!this.isLocationOutOfBounds(upRightNext)){
+                            if(board2DArray[upRightNext[0]][upRightNext[1]] === 0){
+                                $('.rowOfPieces').eq(upRightNext[0]).children().eq(upRightNext[1]).addClass('selectedToMove killer');
+                            }
+                        }
+
+                    }
+                }
+
+                if(!this.isLocationOutOfBounds(upLeft)){
+                    if(board2DArray[upLeft[0]][upLeft[1]] === 1 || board2DArray[upLeft[0]][upLeft[1]] === 10){
+                        if(!this.isLocationOutOfBounds(upLeftNext)){
+                            if(board2DArray[upLeftNext[0]][upLeftNext[1]] === 0){
+                                $('.rowOfPieces').eq(upLeftNext[0]).children().eq(upLeftNext[1]).addClass('selectedToMove killer');
+                            }
+                        }
+
+                    }
+                }
+
+            }
+        }
+
     }
 
     updateOrigin(){
