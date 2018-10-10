@@ -36,6 +36,10 @@ function initializeApp(){
         game.resetGame();
     });
 
+    $('#passTurn').click(()=>{
+        game.passTurn();
+    });
+
     var winModal = $('#wM');
     var startBtn = $('#startBtn');
 
@@ -78,6 +82,19 @@ class CheckerGame{
         this.populateChips();
         this.applyClickHandlers();
         this.updateFromLocalStorage();
+    }
+    passTurn(){
+        this.currentPlayer = 1 - this.currentPlayer;
+        $('.rowOfPieces div').removeClass('highlightPiece');
+        $('.rowOfPieces div').removeClass('selectedToMove');
+
+        if(this.currentPlayer === 0){
+            $('.player1Active').addClass('playerSelected');
+            $('.player2Active').removeClass('playerSelected');
+        } else{
+            $('.player2Active').addClass('playerSelected');
+            $('.player1Active').removeClass('playerSelected');
+        }
     }
 
     updateFromLocalStorage(){
@@ -255,6 +272,12 @@ class CheckerGame{
     }
 
     selectPiece(event){
+        var killerMultiple = $('.killerMultiple');
+        if(killerMultiple.length > 0){
+            if(!$(event.target).hasClass('killerMultiple')){
+                return;
+            }
+        }
         this.boardRowIndex = $(event.target).parent().index();
         this.boardColIndex = $(event.target).index();
         var clickedPlayer = board2DArray[this.boardRowIndex][this.boardColIndex];
@@ -284,9 +307,8 @@ class CheckerGame{
             if(board2DArray[this.boardRowIndex][this.boardColIndex] === 0){
                 board2DArray[this.boardRowIndex][this.boardColIndex] = this.player;
                 this.justMovedTo = [this.boardRowIndex, this.boardColIndex];
-                debugger;
                 board2DArray[this.origin[0]][this.origin[1]] = 0;
-                if($(event.target).hasClass('killer')){
+                if($(event.target).hasClass('killer') || $(event.target).hasClass('killerMultiple')){
                     var enemyKilled = this.enemyBeingKilled();
                     if(!this.isLocationOutOfBounds(enemyKilled)){
                         this.updateDeceasedPlayerCount(enemyKilled);
@@ -294,6 +316,7 @@ class CheckerGame{
                         this.justCapturedOneOrMore = true;
                     }
                     $('.rowOfPieces div').removeClass('killer');
+                    $('.rowOfPieces div').removeClass('killerMultiple');
                 }
                 if($(event.target).parent().index() === 0 && this.player === 2){
                     board2DArray[this.boardRowIndex][this.boardColIndex] = 20;
@@ -308,10 +331,12 @@ class CheckerGame{
 
                 if(this.justCapturedOneOrMore){
                     this.checkForMultipleJumps();
-                    var killer = $('.killer');
-                    if(killer.length > 0){
+                    var killerMultiple = $('.killerMultiple');
+                    if(killerMultiple.length > 0){
                         this.updateOrigin();
                         this.populateChips();
+                        debugger;
+                        $('.rowOfPieces').eq(this.origin[0]).children().eq(this.origin[1]).addClass('highlightPiece');
                         return;
                     } else {
                         this.currentPlayer = 1 - this.currentPlayer;
@@ -364,7 +389,6 @@ class CheckerGame{
 
     checkForMultipleJumps(){
         if(this.justMovedTo.length !== 0){
-            debugger;
             this.boardRowIndex = this.justMovedTo[0];
             this.boardColIndex = this.justMovedTo[1];
 
@@ -378,7 +402,7 @@ class CheckerGame{
                     if(board2DArray[downRight[0]][downRight[1]] === 2 || board2DArray[downRight[0]][downRight[1]] === 20){
                         if(!this.isLocationOutOfBounds(downRightNext)){
                             if(board2DArray[downRightNext[0]][downRightNext[1]] === 0){
-                                $('.rowOfPieces').eq(downRightNext[0]).children().eq(downRightNext[1]).addClass('selectedToMove killer');
+                                $('.rowOfPieces').eq(downRightNext[0]).children().eq(downRightNext[1]).addClass('selectedToMove killerMultiple');
                             }
                         }
 
@@ -388,7 +412,7 @@ class CheckerGame{
                     if(board2DArray[downLeft[0]][downLeft[1]] === 2 || board2DArray[downLeft[0]][downLeft[1]] === 20){
                         if(!this.isLocationOutOfBounds(downLeftNext)){
                             if(board2DArray[downLeftNext[0]][downLeftNext[1]] === 0){
-                                $('.rowOfPieces').eq(downLeftNext[0]).children().eq(downLeftNext[1]).addClass('selectedToMove killer');
+                                $('.rowOfPieces').eq(downLeftNext[0]).children().eq(downLeftNext[1]).addClass('selectedToMove killerMultiple');
                             }
                         }
 
@@ -404,7 +428,7 @@ class CheckerGame{
                   if(board2DArray[upRight[0]][upRight[1]] === 1 || board2DArray[upRight[0]][upRight[1]] === 10){
                         if(!this.isLocationOutOfBounds(upRightNext)){
                             if(board2DArray[upRightNext[0]][upRightNext[1]] === 0){
-                                $('.rowOfPieces').eq(upRightNext[0]).children().eq(upRightNext[1]).addClass('selectedToMove killer');
+                                $('.rowOfPieces').eq(upRightNext[0]).children().eq(upRightNext[1]).addClass('selectedToMove killerMultiple');
                             }
                         }
 
@@ -415,13 +439,126 @@ class CheckerGame{
                     if(board2DArray[upLeft[0]][upLeft[1]] === 1 || board2DArray[upLeft[0]][upLeft[1]] === 10){
                         if(!this.isLocationOutOfBounds(upLeftNext)){
                             if(board2DArray[upLeftNext[0]][upLeftNext[1]] === 0){
-                                $('.rowOfPieces').eq(upLeftNext[0]).children().eq(upLeftNext[1]).addClass('selectedToMove killer');
+                                $('.rowOfPieces').eq(upLeftNext[0]).children().eq(upLeftNext[1]).addClass('selectedToMove killerMultiple');
                             }
                         }
 
                     }
                 }
 
+            } else if (this.player === 10) {
+                var downRight = [this.boardRowIndex + 1, this.boardColIndex + 1];
+                var downRightNext = [this.boardRowIndex + 2, this.boardColIndex + 2];
+                var downLeft = [this.boardRowIndex + 1, this.boardColIndex - 1];
+                var downLeftNext = [this.boardRowIndex + 2, this.boardColIndex - 2];
+                var upRight = [this.boardRowIndex - 1, this.boardColIndex + 1];
+                var upRightNext = [this.boardRowIndex - 2, this.boardColIndex + 2];
+                var upLeft = [this.boardRowIndex - 1, this.boardColIndex - 1];
+                var upLeftNext = [this.boardRowIndex - 2, this.boardColIndex - 2];
+
+                // console.log(this.isLocationOutOfBounds(downRight));
+
+                if(!this.isLocationOutOfBounds(downRight)){
+                    if (board2DArray[downRight[0]][downRight[1]] === 2 || board2DArray[downRight[0]][downRight[1]] === 20) {
+                        if(!this.isLocationOutOfBounds(downRightNext)){
+                            if (board2DArray[downRightNext[0]][downRightNext[1]] === 0) {
+                                $('.rowOfPieces').eq(downRightNext[0]).children().eq(downRightNext[1]).addClass('selectedToMove killerMultiple');
+                            }
+                        }
+
+                    }
+                }
+
+                if(!this.isLocationOutOfBounds(downLeft)){
+                    if (board2DArray[downLeft[0]][downLeft[1]] === 2 || board2DArray[downLeft[0]][downLeft[1]] === 20) {
+                        if(!this.isLocationOutOfBounds(downLeftNext)){
+                            if (board2DArray[downLeftNext[0]][downLeftNext[1]] === 0) {
+                                $('.rowOfPieces').eq(downLeftNext[0]).children().eq(downLeftNext[1]).addClass('selectedToMove killerMultiple');
+                            }
+                        }
+
+                    }
+                }
+
+                if(!this.isLocationOutOfBounds(upRight)){
+                    if(board2DArray[upRight[0]][upRight[1]] === 2 || board2DArray[upRight[0]][upRight[1]] === 20){
+                        if(!this.isLocationOutOfBounds(upRightNext)){
+                            if(board2DArray[upRightNext[0]][upRightNext[1]] === 0){
+                                $('.rowOfPieces').eq(upRightNext[0]).children().eq(upRightNext[1]).addClass('selectedToMove killerMultiple');
+                            }
+                        }
+
+                    }
+                }
+
+                if(!this.isLocationOutOfBounds(upLeft)){
+                    if(board2DArray[upLeft[0]][upLeft[1]] === 2 || board2DArray[upLeft[0]][upLeft[1]] === 20){
+                        if(!this.isLocationOutOfBounds(upLeftNext)){
+                            if(board2DArray[upLeftNext[0]][upLeftNext[1]] === 0){
+                                $('.rowOfPieces').eq(upLeftNext[0]).children().eq(upLeftNext[1]).addClass('selectedToMove killerMultiple');
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            // player 20 - king of player 2
+            if (this.player === 20) {
+                var downRight = [this.boardRowIndex + 1, this.boardColIndex + 1];
+                var downRightNext = [this.boardRowIndex + 2, this.boardColIndex + 2];
+                var downLeft = [this.boardRowIndex + 1, this.boardColIndex - 1];
+                var downLeftNext = [this.boardRowIndex + 2, this.boardColIndex - 2];
+                var upRight = [this.boardRowIndex - 1, this.boardColIndex + 1];
+                var upRightNext = [this.boardRowIndex - 2, this.boardColIndex + 2];
+                var upLeft = [this.boardRowIndex - 1, this.boardColIndex - 1];
+                var upLeftNext = [this.boardRowIndex - 2, this.boardColIndex - 2];
+
+                // console.log(this.isLocationOutOfBounds(downRight));
+
+                if(!this.isLocationOutOfBounds(downRight)){
+                    if (board2DArray[downRight[0]][downRight[1]] === 1 || board2DArray[downRight[0]][downRight[1]] === 10) {
+                        if(!this.isLocationOutOfBounds(downRightNext)){
+                            if (board2DArray[downRightNext[0]][downRightNext[1]] === 0) {
+                                $('.rowOfPieces').eq(downRightNext[0]).children().eq(downRightNext[1]).addClass('selectedToMove killerMultiple');
+                            }
+                        }
+
+                    }
+                }
+
+                if(!this.isLocationOutOfBounds(downLeft)){
+                    if (board2DArray[downLeft[0]][downLeft[1]] === 1 || board2DArray[downLeft[0]][downLeft[1]] === 10) {
+                        if(!this.isLocationOutOfBounds(downLeftNext)){
+                            if (board2DArray[downLeftNext[0]][downLeftNext[1]] === 0) {
+                                $('.rowOfPieces').eq(downLeftNext[0]).children().eq(downLeftNext[1]).addClass('selectedToMove killerMultiple');
+                            }
+                        }
+
+                    }
+                }
+
+                if(!this.isLocationOutOfBounds(upRight)){
+                    if(board2DArray[upRight[0]][upRight[1]] === 1 || board2DArray[upRight[0]][upRight[1]] === 10){
+                        if(!this.isLocationOutOfBounds(upRightNext)){
+                            if(board2DArray[upRightNext[0]][upRightNext[1]] === 0){
+                                $('.rowOfPieces').eq(upRightNext[0]).children().eq(upRightNext[1]).addClass('selectedToMove killerMultiple');
+                            }
+                        }
+
+                    }
+                }
+
+                if(!this.isLocationOutOfBounds(upLeft)){
+                    if(board2DArray[upLeft[0]][upLeft[1]] === 1 || board2DArray[upLeft[0]][upLeft[1]] === 10){
+                        if(!this.isLocationOutOfBounds(upLeftNext)){
+                            if(board2DArray[upLeftNext[0]][upLeftNext[1]] === 0){
+                                $('.rowOfPieces').eq(upLeftNext[0]).children().eq(upLeftNext[1]).addClass('selectedToMove killerMultiple');
+                            }
+                        }
+
+                    }
+                }
             }
         }
 
