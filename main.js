@@ -335,7 +335,6 @@ class CheckerGame{
                     if(killerMultiple.length > 0){
                         this.updateOrigin();
                         this.populateChips();
-                        debugger;
                         $('.rowOfPieces').eq(this.origin[0]).children().eq(this.origin[1]).addClass('highlightPiece');
                         return;
                     } else {

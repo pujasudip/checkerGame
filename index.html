@@ -5,10 +5,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="main.js"></script>
+    <script src="statsModal.js"></script>
     <title>Checkers</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="forms.css">
+    <link rel="stylesheet" href="style_mobile.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -65,6 +68,29 @@
             <div class="player2">
                 <div class="playerImg whitePiece center-block player2Active"></div>
                 <div class="killedPlayer1"></div>
+            </div>
+            <div class="player2Stat">
+                <table>
+                    <tr>
+                        <th class="statHeader" colspan="2">Statistics</th>
+                    </tr>
+                    <tr>
+                        <td>Won:</td>
+                        <td class="statPara bWon">0</td>
+                    </tr>
+                    <tr>
+                        <td>Lost:</td>
+                        <td class="statPara bLost">0</td>
+                    </tr>
+                    <tr>
+                        <td>Total Played:</td>
+                        <td class="statPara bTotalPlayed">0</td>
+                    </tr>
+                    <tr>
+                        <td>W/L Ratio:</td>
+                        <td class="statPara bRatio">0</td>
+                    </tr>
+                </table>
             </div>
             <div class="player2Stat">
                 <table>
@@ -204,6 +230,69 @@
 <!--not your turn message-->
 <div id="notYourTurnMessage" class="text-center">
     <p>It is not your turn.</p>
+</div>
+<!--stats modal-->
+<div class="statsModalShowBtn">
+    <p>Statistics</p>
+    <p class="statsAngleIcon"><i class="fas fa-angle-down fa-lg"></i></p>
+</div>
+<div class="statsModalContainer">
+    <div class="statsModal">
+        <div class="statsModalHeader">
+            <h3>Statistics</h3>
+        </div>
+        <div class="statsModalContent">
+            <div class="player1ModalStat">
+                <table>
+                    <tr>
+                        <th class="statHeader" colspan="2">Player 1</th>
+                    </tr>
+                    <tr>
+                        <td>Won:</td>
+                        <td class="statPara bWon">0</td>
+                    </tr>
+                    <tr>
+                        <td>Lost:</td>
+                        <td class="statPara bLost">0</td>
+                    </tr>
+                    <tr>
+                        <td>Total Played:</td>
+                        <td class="statPara bTotalPlayed">0</td>
+                    </tr>
+                    <tr>
+                        <td>W/L Ratio:</td>
+                        <td class="statPara bRatio">0</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="player2ModalStat">
+                <table>
+                    <tr>
+                        <th class="statHeader" colspan="2">Player 2</th>
+                    </tr>
+                    <tr>
+                        <td>Won:</td>
+                        <td class="statPara bWon">0</td>
+                    </tr>
+                    <tr>
+                        <td>Lost:</td>
+                        <td class="statPara bLost">0</td>
+                    </tr>
+                    <tr>
+                        <td>Total Played:</td>
+                        <td class="statPara bTotalPlayed">0</td>
+                    </tr>
+                    <tr>
+                        <td>W/L Ratio:</td>
+                        <td class="statPara bRatio">0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="statsModalFooter">
+            <div class="statsModalHideBtn"><i class="fas fa-angle-up fa-lg"></i></div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

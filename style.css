@@ -292,110 +292,6 @@ body{
     background-color: rgba(85, 249, 251, 0.85);
     border-radius: 0 0 10px 10px;
 }
-/*@media only screen and (max-width: 850px) {*/
-    /*.gameArea{*/
-        /*height: 80%;*/
-    /*}*/
-    /*.killedPlayer1Img, .killedPlayer2Img{*/
-        /*position: relative;*/
-        /*left: 50%;*/
-        /*transform: translateX(-50%);*/
-    /*}*/
-    /*.killedPlayer1Img{*/
-        /*display: block;*/
-        /*width: 45%;*/
-        /*height: 15%;*/
-        /*float: none;*/
-    /*}*/
-    /*.killedPlayer2Img{*/
-        /*display: block;*/
-        /*width: 45%;*/
-        /*height: 15%;*/
-        /*float: none;*/
-    /*}*/
-    /*.player1{*/
-        /*position: absolute;*/
-        /*left: 0;*/
-        /*display: inline-block;*/
-        /*width: 15%;*/
-        /*height: 100%;*/
-        /*float: left;*/
-    /*}*/
-    /*.player2{*/
-        /*position: absolute;*/
-        /*right: 0;*/
-        /*display: inline-block;*/
-        /*width: 15%;*/
-        /*height: 100%;*/
-        /*float: right;*/
-    /*}*/
-    /*.gameAction{*/
-        /*position: absolute;*/
-        /*left: 50%;*/
-        /*transform: translateX(-50%);*/
-        /*height: 65vmin;*/
-        /*width: 65vmin;*/
-    /*}*/
-    /*.playerStatus{*/
-        /*float: none;*/
-        /*width: 100%;*/
-        /*height: 10%;*/
-    /*}*/
-    /*.playerImg{*/
-        /*width: 45px;*/
-        /*height: 45px;*/
-        /*border-radius: 50%;*/
-    /*}*/
-    /*.player1Stat{*/
-        /*width: 48%;*/
-        /*display: inline-block;*/
-    /*}*/
-    /*.player2Stat{*/
-        /*width: 48%;*/
-        /*display: inline-block;*/
-    /*}*/
-    /*.lineSeparator{*/
-        /*display: inline-block;*/
-        /*height: 150px;*/
-        /*width: 2px;*/
-        /*background-color: red;*/
-    /*}*/
-/*}*/
-/*@media only screen and (max-width: 700px){*/
-    /*.navItem{*/
-        /*font-size: 1rem;*/
-    /*}*/
-    /*.gameAction{*/
-        /*position: absolute;*/
-        /*left: 50%;*/
-        /*transform: translateX(-50%);*/
-        /*height: 65vmin;*/
-        /*width: 65vmin;*/
-    /*}*/
-    /*.playerStatus{*/
-        /*position: relative;*/
-        /*margin-top: 5%;*/
-    /*}*/
-    /*.playerImg{*/
-        /*width: 25px;*/
-        /*height: 25px;*/
-        /*border-radius: 50%;*/
-    /*}*/
-    /*.player1Stat{*/
-        /*width: 48%;*/
-        /*display: inline-block;*/
-    /*}*/
-    /*.player2Stat{*/
-        /*width: 48%;*/
-        /*display: inline-block;*/
-    /*}*/
-    /*.lineSeparator{*/
-        /*display: inline-block;*/
-        /*height: 150px;*/
-        /*width: 2px;*/
-        /*background-color: red;*/
-    /*}*/
-/*}*/
 .rulesModal{
     display: none;
     position: absolute;
@@ -466,6 +362,7 @@ body{
 }
 #notYourTurnMessage p {
     margin: 0;
+    width: 90%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -488,4 +385,10 @@ body{
 ul{
     padding: 0;
     margin-top: 10px;
+}
+.statsModalShowBtn{
+    display: none;
+}
+.statsModalContainer{
+    display: none;
 }
