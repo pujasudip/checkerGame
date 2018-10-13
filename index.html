@@ -5,16 +5,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="main.js"></script>
+    <script src="statsModal.js"></script>
+    <script src="mobile_menu.js"></script>
     <title>Checkers</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="forms.css">
+    <link rel="stylesheet" href="style_sm_screen.css">
+    <link rel="stylesheet" href="style_mobile.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+<div class="myLogo">
+
+</div>
 <div class="main-container">
     <div class="header-banner">
+        <div class="settings placeHolder"></div>
         <div class="logo-menu">
+
             <div class="navbar">
                 <ul>
                     <li class="navItem" id="home"><a>Home</a></li>
@@ -24,6 +34,11 @@
                     <li class="navItem" id="passTurn"><a>Pass</a></li>
                 </ul>
             </div>
+        </div>
+        <div class="hamLogo">
+
+        </div>
+        <div class="hamicon">
         </div>
     </div>
     <div class="gameArea">
@@ -89,6 +104,47 @@
                     </tr>
                 </table>
             </div>
+            <div class="player2Stat">
+                <table>
+                    <tr>
+                        <th class="statHeader" colspan="2">Statistics</th>
+                    </tr>
+                    <tr>
+                        <td>Won:</td>
+                        <td class="statPara bWon">0</td>
+                    </tr>
+                    <tr>
+                        <td>Lost:</td>
+                        <td class="statPara bLost">0</td>
+                    </tr>
+                    <tr>
+                        <td>Total Played:</td>
+                        <td class="statPara bTotalPlayed">0</td>
+                    </tr>
+                    <tr>
+                        <td>W/L Ratio:</td>
+                        <td class="statPara bRatio">0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="hamMenuContainer">
+    <div class="hamMenu">
+        <div class="hamMenuHeader">
+            <div class="hamClose"><i class="fas fa-times"></i></div>
+        </div>
+        <div class="hamMenuContent">
+            <h4>Hello, Guest!</h4>
+            <ul>
+                <li class="navItemH" id="homeH"><a><i class="fas fa-home"></i>&nbsp;Home</a></li>
+                <li class="navItemH" id="rulesH"><a><i class="fas fa-pencil-ruler"></i>&nbsp;Rules</a></li>
+                <li class="navItemH" id="contactH"><a><i class="far fa-envelope"></i>&nbsp;Contact</a></li>
+                <li class="navItemH" id="resetGameH"><a><i class="fas fa-power-off"></i>&nbsp;Reset</a></li>
+                <li class="navItemH" id="passTurnH"><a><i class="fas fa-toggle-on"></i>&nbsp;Pass</a></li>
+                <li class="navItemH" id="statsH"><a><i class="fas fa-table"></i>&nbsp;Stats</a></li>
+            </ul>
         </div>
     </div>
 </div>
@@ -204,6 +260,69 @@
 <!--not your turn message-->
 <div id="notYourTurnMessage" class="text-center">
     <p>It is not your turn.</p>
+</div>
+<!--stats modal-->
+<div class="statsModalShowBtn">
+    <p>Statistics</p>
+    <p class="statsAngleIcon"><i class="fas fa-angle-down fa-lg"></i></p>
+</div>
+<div class="statsModalContainer">
+    <div class="statsModal">
+        <div class="statsModalHeader">
+            <h3>Statistics</h3>
+        </div>
+        <div class="statsModalContent">
+            <div class="player1ModalStat">
+                <table>
+                    <tr>
+                        <th class="statHeader" colspan="2">Player 1</th>
+                    </tr>
+                    <tr>
+                        <td>Won:</td>
+                        <td class="statPara wWon">0</td>
+                    </tr>
+                    <tr>
+                        <td>Lost:</td>
+                        <td class="statPara wLost">0</td>
+                    </tr>
+                    <tr>
+                        <td>Total Played:</td>
+                        <td class="statPara wTotalPlayed">0</td>
+                    </tr>
+                    <tr>
+                        <td>W/L Ratio:</td>
+                        <td class="statPara wRatio">0</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="player2ModalStat">
+                <table>
+                    <tr>
+                        <th class="statHeader" colspan="2">Player 2</th>
+                    </tr>
+                    <tr>
+                        <td>Won:</td>
+                        <td class="statPara bWon">0</td>
+                    </tr>
+                    <tr>
+                        <td>Lost:</td>
+                        <td class="statPara bLost">0</td>
+                    </tr>
+                    <tr>
+                        <td>Total Played:</td>
+                        <td class="statPara bTotalPlayed">0</td>
+                    </tr>
+                    <tr>
+                        <td>W/L Ratio:</td>
+                        <td class="statPara bRatio">0</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="statsModalFooter">
+            <div class="statsModalHideBtn"><i class="fas fa-angle-up fa-lg"></i></div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

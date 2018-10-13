@@ -32,10 +32,13 @@
     position: absolute;
     left: 40%;
     width: 50%;
-    border-radius: 2px;
+    border: 1px solid #a9d5fb;
+    border-radius: 5px;
+    box-shadow: 0 0 1px 1px rgba(63, 90, 94, 0.59);
+    background-color: rgb(240, 240, 240);
 }
 .field:focus{
-   background-color: rgba(252, 255, 143, 0.51);
+   background-color: rgba(164, 228, 255, 0.51);
 }
 .formLine{
     margin-bottom: 10px;
