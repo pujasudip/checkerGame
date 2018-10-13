@@ -54,6 +54,15 @@ function initializeApp(){
     game.sendMessage();
     game.setMenuActive();
     $('#home').addClass('menuOnFocus');
+    var toHideStatsModal = window.matchMedia("(max-width: 900px)");
+    toHideStatsModal.addListener(function(){
+        $('.statsModalContainer').css('display', 'none');
+        $('.hamMenuContainer').css('display', 'none');
+    });
+    var toHideHamMenu = window.matchMedia("(max-width: 500px)");
+    toHideHamMenu.addListener(function(){
+        $('.hamMenuContainer').css('display', 'none');
+    });
 }
 
 class CheckerGame{
@@ -84,6 +93,10 @@ class CheckerGame{
         this.updateFromLocalStorage();
     }
     passTurn(){
+        if($('.gameAction').find('Button').length === 1){
+            return;
+        }
+
         this.currentPlayer = 1 - this.currentPlayer;
         $('.rowOfPieces div').removeClass('highlightPiece');
         $('.rowOfPieces div').removeClass('selectedToMove');
@@ -113,13 +126,13 @@ class CheckerGame{
         $('.wTotalPlayed').text(this.wWon + this.wLost);
 
         if(this.wWon === 0 && this.wLost === 0){
-            wRatio = '0.00';
+            wRatio = '0.00%';
         } else if(this.wWon !== 0 && this.wLost === 0){
-            wRatio = '100.00';
+            wRatio = '100.00%';
         } else {
             wRatio = ((this.wWon / (this.wWon + this.wLost)) * 100).toFixed(2);
         }
-        $('.wRatio').text(wRatio);
+        $('.wRatio').text(wRatio + '%');
 
         $('.bWon').text(this.bWon);
         $('.wLost').text(this.wLost);

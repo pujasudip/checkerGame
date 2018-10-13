@@ -1,0 +1,183 @@
+@media only screen and (max-width: 900px) {
+    .statsModalShowBtn{
+        display: inline-block;
+    }
+    .gameAction{
+        position: absolute;
+        width: 85vmin;
+        height: 85vmin;
+        margin-top: 1%;
+    }
+    .gameStatusPlayer1{
+        position: absolute;
+        top: 90vmin;
+        left: 0;
+        height: 5vh;
+        width: 50vw;
+        border-right-width: 2px;
+        border-right-color: red;
+        border-right-style: solid;
+        z-index: 100;
+    }
+    .gameStatusPlayer2{
+        position: absolute;
+        top: 90vmin;
+        left: 51vw;
+        height: 10vh;
+        width: 50vw;
+    }
+    .killedPlayer2, .killedPlayer1{
+        display: none;
+    }
+    .player1Stat, .player2Stat{
+        display: none;
+    }
+    .playerImg{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+    .killedPlayer1Img{
+        display: inline-block;
+        width: 15%;
+        height: 25px;
+        float: left;
+    }
+    .killedPlayer2Img{
+        width: 15%;
+        height: 25px;
+        float: left;
+    }
+    .killedPlayer1Img{
+        margin: 0;
+    }
+    .killedPlayer2Img{
+        margin: 0;
+    }
+    .statsModalContainer{
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(240, 240, 240, 0.71);
+    }
+    .statsModal{
+        position: absolute;
+        height: 30%;
+        width: 100%;
+        top: 0;
+        background-color: rgb(202, 238, 251);
+        z-index: 1000;
+        animation-name: slideInDown;
+        animation-duration: 1s;
+    }
+    .statsModalHeader{
+        position: relative;
+        text-align: center;
+        height: 20%;
+    }
+    .statsModalContent{
+        width: 100%;
+        height: 60%;
+    }
+    .statsModalFooter{
+        position: relative;
+        background-color: rgba(251, 181, 82, 0);
+        height: 20%;
+    }
+    .statsModalFooter > button{
+        position: relative;
+        left: 90%;
+        width: 10%;
+    }
+    .player1ModalStat{
+        display: inline-block;
+        width: 49%;
+        height: 100%;
+    }
+    .player2ModalStat{
+        display: inline-block;
+        width: 49%;
+        height: 100%;
+    }
+    .statsModalShowBtn{
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 90%;
+        width: 10%;
+        height: 3.5%;
+        background-color: #a9b0ff;
+        border-radius: 0 0 0 7px;
+    }
+    .statsModalShowBtn > p{
+        margin-bottom: -5px;
+        color: white;
+    }
+    .statsModalHideBtn{
+        text-align: center;
+        position: relative;
+        top: 30%;
+        left: 90%;
+        width: 10%;
+        height: 100%;
+        background-color: rgb(202, 238, 251);
+        border-radius: 0 0 0 7px;
+        cursor: pointer;
+    }
+    .statsModalHideBtn > i{
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
+
+
+
+
+
+
+    @keyframes slideInDown {
+        from {
+            -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0);
+            visibility: hidden;
+        }
+
+        to {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    @keyframes slideOutUp {
+        0%{
+            height: 30vh;
+        }
+        100%{
+            height: 0;
+            visibility: visible;
+        }
+    }
+    .statsAngleDown > i{
+       color: #32804b;
+        transform: rotate(0deg);
+    }
+    .statsAngleUp > i{
+        color: #32804b;
+        transform: rotate(180deg);
+    }
+    .player1ModalStat > table{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .player2ModalStat > table{
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

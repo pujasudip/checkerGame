@@ -1,145 +1,102 @@
-@media only screen and (max-width: 900px) {
-    .statsModalShowBtn{
-        display: inline-block;
+@media only screen and (max-width: 500px){
+    .main-container{
+
     }
-    .gameAction{
-        position: absolute;
-        width: 90vmin;
-        height: 90vmin;
-    }
-    .gameStatusPlayer1{
-        position: absolute;
-        top: 92vmin;
+    .header-banner{
+        width: 100vw;
         height: 10vh;
-        width: 50vw;
-        border-right-width: 2px;
-        border-right-color: red;
-        border-right-style: solid;
-        z-index: 100;
+        margin-left: -5.5%;
+        background-color: rgba(47, 187, 226, 0.85);
+        display: flex;
+        justify-content: space-between;
     }
-    .gameStatusPlayer2{
-        position: absolute;
-        top: 92vmin;
-        left: 51vw;
-        height: 10vh;
-        width: 50vw;
-    }
-    .player1Stat, .player2Stat{
+    .navbar{
         display: none;
     }
-    .playerImg{
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
+    .gameAction{
+        margin: 10% 0 0 0;
+        box-shadow: none;
     }
-    .killedPlayer1Img{
+    .statsModalShowBtn{
+        display: none;
+    }
+    .hamLogo{
+        position: absolute;
+        top: 0;
+        left: 50%;
         display: inline-block;
-        width: 15%;
-        height: 25px;
-        float: left;
+        font-size: 4.5rem;
+        transform: translateX(-50%);
     }
-    .killedPlayer2Img{
-        width: 15%;
-        height: 25px;
-        float: left;
+    .hamicon{
+        background-image: url("images/hamIcon.png");
+        width: 20%;
+        height: 100%;
+        background-position: center;
+        background-size: contain;
+        float: right;
+        cursor: pointer;
+        background-repeat: no-repeat;
     }
-    .killedPlayer1Img{
-        margin: 0;
-    }
-    .killedPlayer2Img{
-        margin: 0;
-    }
-    .statsModalContainer{
+    .hamMenuContainer{
         display: none;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(240, 240, 240, 0.71);
+        background-color: rgba(233, 233, 233, 0.51);
     }
-    .statsModal{
-        position: absolute;
-        height: 30%;
-        width: 100%;
-        top: 0;
-        background-color: rgb(202, 238, 251);
-        z-index: 1000;
-        animation-name: slideInDown;
-        animation-duration: 1s;
-    }
-    .statsModalHeader{
-        position: relative;
-        text-align: center;
-        height: 20%;
-    }
-    .statsModalContent{
-        width: 100%;
-        height: 60%;
-    }
-    .statsModalFooter{
-        position: relative;
-        background-color: rgba(251, 181, 82, 0);
-        height: 20%;
-    }
-    .statsModalFooter > button{
-        position: relative;
-        left: 90%;
-        width: 10%;
-    }
-    .player1ModalStat{
-        display: inline-block;
-        width: 49%;
-        height: 100%;
-    }
-    .player2ModalStat{
-        display: inline-block;
-        width: 49%;
-        height: 100%;
-    }
-    .statsModalShowBtn{
-        text-align: center;
+    .hamMenu{
         position: absolute;
         top: 0;
-        left: 90%;
-        width: 10%;
-        height: 5%;
-        background-color: #a9b0ff;
-        border-radius: 0 0 0 7px;
-    }
-    .statsModalShowBtn > p{
-        margin-bottom: -5px;
-        color: white;
-    }
-    .statsModalHideBtn{
-        text-align: center;
-        position: relative;
-        top: 30%;
-        left: 90%;
-        width: 10%;
+        left: 50%;
+        width: 50%;
         height: 100%;
-        background-color: rgb(202, 238, 251);
-        border-radius: 0 0 0 7px;
+        background-color: #61DAFB;
+        animation: slideInRight 500ms;
+
+    }
+    .hamMenuHeader{
+
+    }
+    .hamMenuContent{
+        margin-top: 25%;
+    }
+    .hamMenuContent .navItemH{
+        list-style-type: none;
+        margin-left: 10%;
+        margin-bottom: 5%;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    .hamMenuContent i{
+        width: 20%;
+        color: green;
+    }
+    .hamMenuContent a{
+        text-decoration: none;
         cursor: pointer;
     }
-    .statsModalHideBtn > i{
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
+    .hamMenuContent h4{
+        text-align: center;
+        clear: both;
+    }
+    .hamClose i{
+        color: red;
+        font-size: 2rem;
+        float: right;
+        margin: 10%;
+        cursor: pointer;
     }
 
 
 
-
-
-
-
-
-    @keyframes slideInDown {
+    @keyframes slideInRight {
         from {
-            -webkit-transform: translate3d(0, -100%, 0);
-            transform: translate3d(0, -100%, 0);
-            visibility: hidden;
+            -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+            visibility: visible;
         }
 
         to {
@@ -147,33 +104,38 @@
             transform: translate3d(0, 0, 0);
         }
     }
-
-    @keyframes slideOutUp {
-        0%{
-            height: 30vh;
-        }
-        100%{
-            height: 0;
-            visibility: visible;
-        }
+    .innerFormModal{
+        width: 90%
     }
-    .statsAngleDown > i{
-       color: #32804b;
-        transform: rotate(0deg);
+    .myLogo{
+        display: none;
     }
-    .statsAngleUp > i{
-        color: #32804b;
-        transform: rotate(180deg);
-    }
-    .player1ModalStat > table{
-        position: relative;
+    .hamLogo{
+        position: absolute;
+        top: 50%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        background-image: url("images/myLogo.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
-    .player2ModalStat > table{
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
+    .placeHolder{
+        width: 100px;
+        height: 100%;
     }
-
+    .gameStatusPlayer1, .gameStatusPlayer2{
+        margin-top: 10%;
+    }
+    #choosePlayer, #resetGame{
+        width: 100vw;
+    }
+    .killedPlayer1, .killedPlayer2{
+        display: inline-block;
+    }
+    table{
+        width: 85%;
+    }
 }

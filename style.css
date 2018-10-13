@@ -4,6 +4,28 @@ body{
     /*background-position: center;*/
     background-color: rgba(209, 218, 255, 0.58);
 }
+.header-banner{
+   height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.myLogo{
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    background-image: url("images/myLogo.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 2%;
+}
+.hamLogo{
+    display: none;
+}
+.hamMenuContainer{
+    display: none;
+}
 .main-container{
     height: 85vh;
     width: 90vw;
@@ -17,29 +39,32 @@ body{
     position: relative;
     height: 100%;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
 }
 .rowOfPieces{
     height: 12.5%;
 }
 .gameStatusPlayer1{
+    position: relative;
     display: inline-block;
     height: 100%;
-    width: 15%;
+    width: 20%;
     float: left;
 }
 .gameStatusPlayer2{
+    position: relative;
     display: inline-block;
     height: 100%;
-    width: 15%;
-    float: right;
+    width: 20%;
+    float: left;
 }
 .gameAction{
     display: inline-block;
-    height: 85vmin;
-    width: 85vmin;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    height: 65vmin;
+    width: 65vmin;
+    margin: 10% 1% 0;
+    float: left;
     border: 2px solid #ffcc1b;
     box-shadow: 10px 10px 5px 2px #d4cfca;
 }
@@ -257,11 +282,20 @@ body{
 }
 .player1Stat{
     position: absolute;
-    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%;
+    width: 80%;
 }
 .player2Stat{
     position: absolute;
-    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10%;
+    width: 80%;
+}
+table{
+    width: 100%;
 }
 .statPara{
     color: green;
