@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="973d48ab-d9d6-4278-935d-493fabc8e379" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/forms.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/bg2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/bg3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style_mobile.css" beforeDir="false" afterPath="$PROJECT_DIR$/style_sm_screen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style_mobile.css" beforeDir="false" afterPath="$PROJECT_DIR$/style_mobile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style_sm_screen.css" beforeDir="false" afterPath="$PROJECT_DIR$/style_sm_screen.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,96 +21,54 @@
     <session id="-632221460">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="4" />
-          <entry key="html" value="1" />
+          <entry key="css" value="20" />
+          <entry key="html" value="2" />
           <entry key="js" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="4" />
-          <entry key="HTML" value="1" />
+          <entry key="CSS" value="20" />
+          <entry key="HTML" value="2" />
           <entry key="JavaScript" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="2696" />
-          <entry key="html" value="431" />
-          <entry key="js" value="617" />
+          <entry key="css" value="4491" />
+          <entry key="html" value="452" />
+          <entry key="js" value="784" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="2696" />
-          <entry key="HTML" value="431" />
-          <entry key="JavaScript" value="617" />
+          <entry key="CSS" value="4491" />
+          <entry key="HTML" value="452" />
+          <entry key="JavaScript" value="784" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="293" column="48" selection-start-line="293" selection-start-column="48" selection-end-line="293" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-868">
-              <caret line="599" column="26" selection-start-line="599" selection-start-column="21" selection-end-line="599" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/style_mobile.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="138" column="16" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="47" column="18" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/forms.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/style_sm_screen.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-571">
-              <caret line="113" column="5" lean-forward="true" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+            <state relative-caret-position="214">
+              <caret line="311" column="45" selection-start-line="311" selection-start-column="45" selection-end-line="311" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -124,24 +85,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>#home</find>
-      <find>#rules</find>
-      <find>home</find>
-      <find>rules</find>
       <find>reset</find>
-      <find>pass</find>
       <find>menu</find>
       <find>status</find>
       <find>stats</find>
       <find>player1stat</find>
       <find>player1Stat</find>
-      <find>player1</find>
-      <find>gameAction</find>
       <find>statsModalShow</find>
       <find>player1S</find>
       <find>player</find>
       <find>Ratio</find>
       <find>gameArea</find>
+      <find>winmodal</find>
+      <find>star</find>
+      <find>congratu</find>
+      <find>@media</find>
+      <find>playerIm</find>
+      <find>gameSt</find>
+      <find>empty</find>
+      <find>gameAction</find>
+      <find>player1 &gt;</find>
+      <find>newGame</find>
+      <find>#notYourTurnMessage</find>
+      <find>player1</find>
+      <find>pass</find>
+      <find>statpar</find>
+      <find>win</find>
+      <find>winmo</find>
+      <find>box-shadow</find>
+      <find>btn</find>
+      <find>table</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -152,11 +125,11 @@
       <list>
         <option value="$PROJECT_DIR$/forms.css" />
         <option value="$PROJECT_DIR$/mobile_menu.js" />
-        <option value="$PROJECT_DIR$/style.css" />
-        <option value="$PROJECT_DIR$/style_sm_screen.css" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/style_mobile.css" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/style_sm_screen.css" />
+        <option value="$PROJECT_DIR$/style.css" />
       </list>
     </option>
   </component>
@@ -179,6 +152,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -196,7 +170,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -238,18 +211,21 @@
       <workItem from="1539274789273" duration="8106000" />
       <workItem from="1539301861141" duration="1679000" />
       <workItem from="1539364288428" duration="719000" />
-      <workItem from="1539383224414" duration="7513000" />
+      <workItem from="1539383224414" duration="7694000" />
+      <workItem from="1539798088992" duration="73000" />
+      <workItem from="1539801468170" duration="10269000" />
+      <workItem from="1539839174998" duration="1966000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18017000" />
+    <option name="totallyTimeSpent" value="30506000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="725" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26171243" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27382874" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -292,13 +268,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/style_sm_screen.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-571">
-          <caret line="113" column="5" lean-forward="true" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mobile_menu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -313,31 +282,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="47" column="18" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-868">
-          <caret line="599" column="26" selection-start-line="599" selection-start-column="21" selection-end-line="599" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="293" column="48" selection-start-line="293" selection-start-column="48" selection-end-line="293" selection-end-column="48" />
+        <state relative-caret-position="327">
+          <caret line="26" column="35" lean-forward="true" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/style_mobile.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="138" column="16" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="16" />
+        <state relative-caret-position="2145">
+          <caret line="143" column="5" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="174" column="34" selection-start-line="174" selection-start-column="34" selection-end-line="174" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style_sm_screen.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="180" column="9" selection-start-line="180" selection-start-column="4" selection-end-line="180" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="311" column="45" selection-start-line="311" selection-start-column="45" selection-end-line="311" selection-end-column="45" />
         </state>
       </provider>
     </entry>

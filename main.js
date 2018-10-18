@@ -18,16 +18,18 @@ function initializeApp(){
     game.updateFromLocalStorage();
     $(window).on('load',function(){
         $('#rulesModal').css('display', 'block');
+        game.buildGameBoard();
     });
 
     $('.newGame').on('click', function(){
-        $('.gameAction').empty();
         $('#choosePlayer').modal('show');
         $('.player1Modal').click(function () {
+            $('.newGame').remove();
             game.currentPlayer = 0;
             game.startUp();
         });
         $('.player2Modal').click(function () {
+            $('.newGame').remove();
             game.currentPlayer = 1;
             game.startUp();
         });
@@ -40,12 +42,14 @@ function initializeApp(){
         game.passTurn();
     });
 
+    $('#passTurn').css('display', 'none');
+
     var winModal = $('#wM');
     var startBtn = $('#startBtn');
 
     startBtn.click(function(){
         winModal.css('display', 'none');
-        game.startNewGame();
+        game.resetGame();
     });
 
     $('#sendMessage').click(game.sendMessage);
@@ -87,10 +91,10 @@ class CheckerGame{
     }
 
     startUp(){
-        this.buildGameBoard();
         this.populateChips();
         this.applyClickHandlers();
         this.updateFromLocalStorage();
+        $('#passTurn').css('display', 'inline-block');
     }
     passTurn(){
         if($('.gameAction').find('Button').length === 1){
@@ -178,7 +182,7 @@ class CheckerGame{
         this.populateChips();
         this.applyClickHandlers();
 
-        if(currentPlayerArg){
+        if(typeof currentPlayerArg !== undefined){
             this.currentPlayer = currentPlayerArg;
         } else {
             $('#choosePlayer').modal('show');
@@ -223,10 +227,10 @@ class CheckerGame{
             $('.gameAction').append(outerDiv);
             colorIndex = 1 - colorIndex;
         }
-        $('.newGame').css('display', 'none');
     }
 
     populateChips(){
+        $('.newGame').css('display', 'none');
         var rowsInGameBoard = $('.gameAction > .rowOfPieces');
 
         // var squares = $('.square');

@@ -14,7 +14,7 @@
         display: none;
     }
     .gameAction{
-        margin: 10% 0 0 0;
+        margin: 5vh 0 0 0;
         box-shadow: none;
     }
     .statsModalShowBtn{
@@ -127,7 +127,8 @@
         height: 100%;
     }
     .gameStatusPlayer1, .gameStatusPlayer2{
-        margin-top: 10%;
+        margin-top: 75vh;
+        width: 15vw;
     }
     #choosePlayer, #resetGame{
         width: 100vw;
@@ -137,5 +138,17 @@
     }
     table{
         width: 85%;
+    }
+    .killedPlayer2Img, .killedPlayer2Img{
+        margin-right: 2px;
+    }
+}
+@media only screen and (max-width: 450px){
+    .gameStatusPlayer1, .gameStatusPlayer2{
+        margin-top: 75vh;
+        width: 15vw;
+    }
+    .gameAction{
+        margin-top: 10vh;
     }
 }

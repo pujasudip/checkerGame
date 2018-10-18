@@ -1,7 +1,7 @@
 body{
-    /*background-image: url("images/beach.jpg");*/
-    /*background-repeat: no-repeat;*/
-    /*background-position: center;*/
+    background-image: url("images/bg2.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
     background-color: rgba(209, 218, 255, 0.58);
 }
 .header-banner{
@@ -12,13 +12,17 @@ body{
 }
 .myLogo{
     position: absolute;
-    width: 10%;
-    height: 10%;
+    width: 14vmin;
+    height: 14vmin;
     background-image: url("images/myLogo.png");
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     margin: 2%;
+    background-color: rgba(67, 233, 233, 0.75);
+    border-radius: 50%;
+    border: 2px ridge #bfb6fb;
+    box-shadow: 0 0 3px 5px rgba(104, 251, 248, 0.58);
 }
 .hamLogo{
     display: none;
@@ -61,9 +65,9 @@ body{
 }
 .gameAction{
     display: inline-block;
-    height: 65vmin;
-    width: 65vmin;
-    margin: 10% 1% 0;
+    height: 80vmin;
+    width: 80vmin;
+    margin: 0 1% 0;
     float: left;
     border: 2px solid #ffcc1b;
     box-shadow: 10px 10px 5px 2px #d4cfca;
@@ -242,6 +246,7 @@ body{
     position: relative;
     top: 50%;
     border: 1px solid rgba(8, 28, 229, 0.5);
+    background-color: #fbc2a9;
 }
 .navItem:hover{
     background-color: rgba(11, 0, 180, 0.34);
@@ -258,6 +263,8 @@ body{
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    box-shadow: 0 0 2px 3px #fbff79;
+    background-color: #fbff79;
 }
 .playerSelected{
     animation: glow 0.5s alternate infinite;
@@ -286,23 +293,33 @@ body{
     transform: translateX(-50%);
     bottom: 10%;
     width: 80%;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 .player2Stat{
+    color: white;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     bottom: 10%;
     width: 80%;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 table{
     width: 100%;
+    background-color: rgba(48, 78, 49, 0.70);
+    box-shadow: 0 0 5px 15px rgba(48, 78, 49, 0.7);
 }
 .statPara{
-    color: green;
+    color: #940000;
     text-align: right;
+    font-weight: bold;
 }
 .statHeader{
     text-align: center;
+    color: #2a00ff;
     text-decoration: underline;
 }
 .killedPlayer1Img{
@@ -404,9 +421,14 @@ table{
 }
 .newGame{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
+
+}
+.newGame > button{
+    border-radius: 5px;
+    box-shadow: 0 0 2px 5px #ffffff;
 }
 /*@media only screen and (min-width: 1150px) {*/
     /*.gameStatus{*/
