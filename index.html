@@ -17,287 +17,289 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-<div class="myLogo">
+    <div class="wholePageContainer">
+    <div class="myLogo">
 
-</div>
-<div class="main-container">
-    <div class="header-banner">
-        <div class="settings placeHolder"></div>
-        <div class="logo-menu">
+    </div>
+    <div class="main-container">
+        <div class="header-banner">
+            <div class="settings placeHolder"></div>
+            <div class="logo-menu">
 
-            <div class="navbar">
+                <div class="navbar">
+                    <ul>
+                        <li class="navItem" id="home"><a>Home</a></li>
+                        <li class="navItem" id="rules"><a>Rules</a></li>
+                        <li class="navItem" id="contact"><a>Contact</a></li>
+                        <li class="navItem resetGame"><a>Reset</a></li>
+                        <li class="navItem" id="passTurn"><a>Pass</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="hamLogo">
+
+            </div>
+            <div class="hamicon">
+            </div>
+        </div>
+        <div class="gameArea">
+            <div class="gameStatusPlayer1">
+                <div class="player1">
+                    <div class="playerImg blackPiece center-block player1Active"></div>
+                    <div class="killedPlayer2"></div>
+                </div>
+                <div class="player1Stat">
+                    <table>
+                        <tr>
+                            <th class="statHeader" colspan="2">Statistics</th>
+                        </tr>
+                        <tr>
+                            <td>Won:</td>
+                            <td class="statPara bWon">0</td>
+                        </tr>
+                        <tr>
+                            <td>Lost:</td>
+                            <td class="statPara bLost">0</td>
+                        </tr>
+                        <tr>
+                            <td>Total Played:</td>
+                            <td class="statPara bTotalPlayed">0</td>
+                        </tr>
+                        <tr>
+                            <td>W/L Ratio:</td>
+                            <td class="statPara bRatio">0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="gameAction">
+                <div class="newGame">
+                    <button class="btn btn-primary">Start A New Game</button>
+                </div>
+            </div>
+            <div class="gameStatusPlayer2">
+                <div class="player2">
+                    <div class="playerImg whitePiece center-block player2Active"></div>
+                    <div class="killedPlayer1"></div>
+                </div>
+                <div class="player2Stat">
+                    <table>
+                        <tr>
+                            <th class="statHeader" colspan="2">Statistics</th>
+                        </tr>
+                        <tr>
+                            <td>Won:</td>
+                            <td class="statPara wWon">0</td>
+                        </tr>
+                        <tr>
+                            <td>Lost:</td>
+                            <td class="statPara wLost">0</td>
+                        </tr>
+                        <tr>
+                            <td>Total Played:</td>
+                            <td class="statPara wTotalPlayed">0</td>
+                        </tr>
+                        <tr>
+                            <td>W/L Ratio:</td>
+                            <td class="statPara wRatio">0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hamMenuContainer">
+        <div class="hamMenu">
+            <div class="hamMenuHeader">
+                <div class="hamClose"><i class="fas fa-times"></i></div>
+            </div>
+            <div class="hamMenuContent">
+                <h4>Hello, Guest!</h4>
                 <ul>
-                    <li class="navItem" id="home"><a>Home</a></li>
-                    <li class="navItem" id="rules"><a>Rules</a></li>
-                    <li class="navItem" id="contact"><a>Contact</a></li>
-                    <li class="navItem resetGame"><a>Reset</a></li>
-                    <li class="navItem" id="passTurn"><a>Pass</a></li>
+                    <li class="navItemH" id="homeH"><a><i class="fas fa-home"></i>&nbsp;Home</a></li>
+                    <li class="navItemH" id="rulesH"><a><i class="fas fa-pencil-ruler"></i>&nbsp;Rules</a></li>
+                    <li class="navItemH" id="contactH"><a><i class="far fa-envelope"></i>&nbsp;Contact</a></li>
+                    <li class="navItemH" id="resetGameH"><a><i class="fas fa-power-off"></i>&nbsp;Reset</a></li>
+                    <li class="navItemH" id="passTurnH"><a><i class="fas fa-toggle-on"></i>&nbsp;Pass</a></li>
+                    <li class="navItemH" id="statsH"><a><i class="fas fa-table"></i>&nbsp;Stats</a></li>
                 </ul>
             </div>
         </div>
-        <div class="hamLogo">
-
-        </div>
-        <div class="hamicon">
-        </div>
     </div>
-    <div class="gameArea">
-        <div class="gameStatusPlayer1">
-            <div class="player1">
-                <div class="playerImg blackPiece center-block player1Active"></div>
-                <div class="killedPlayer2"></div>
-            </div>
-            <div class="player1Stat">
-                <table>
-                    <tr>
-                        <th class="statHeader" colspan="2">Statistics</th>
-                    </tr>
-                    <tr>
-                        <td>Won:</td>
-                        <td class="statPara bWon">0</td>
-                    </tr>
-                    <tr>
-                        <td>Lost:</td>
-                        <td class="statPara bLost">0</td>
-                    </tr>
-                    <tr>
-                        <td>Total Played:</td>
-                        <td class="statPara bTotalPlayed">0</td>
-                    </tr>
-                    <tr>
-                        <td>W/L Ratio:</td>
-                        <td class="statPara bRatio">0</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="gameAction">
-            <div class="newGame">
-                <button class="btn btn-primary">Start A New Game</button>
-            </div>
-        </div>
-        <div class="gameStatusPlayer2">
-            <div class="player2">
-                <div class="playerImg whitePiece center-block player2Active"></div>
-                <div class="killedPlayer1"></div>
-            </div>
-            <div class="player2Stat">
-                <table>
-                    <tr>
-                        <th class="statHeader" colspan="2">Statistics</th>
-                    </tr>
-                    <tr>
-                        <td>Won:</td>
-                        <td class="statPara wWon">0</td>
-                    </tr>
-                    <tr>
-                        <td>Lost:</td>
-                        <td class="statPara wLost">0</td>
-                    </tr>
-                    <tr>
-                        <td>Total Played:</td>
-                        <td class="statPara wTotalPlayed">0</td>
-                    </tr>
-                    <tr>
-                        <td>W/L Ratio:</td>
-                        <td class="statPara wRatio">0</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="hamMenuContainer">
-    <div class="hamMenu">
-        <div class="hamMenuHeader">
-            <div class="hamClose"><i class="fas fa-times"></i></div>
-        </div>
-        <div class="hamMenuContent">
-            <h4>Hello, Guest!</h4>
-            <ul>
-                <li class="navItemH" id="homeH"><a><i class="fas fa-home"></i>&nbsp;Home</a></li>
-                <li class="navItemH" id="rulesH"><a><i class="fas fa-pencil-ruler"></i>&nbsp;Rules</a></li>
-                <li class="navItemH" id="contactH"><a><i class="far fa-envelope"></i>&nbsp;Contact</a></li>
-                <li class="navItemH" id="resetGameH"><a><i class="fas fa-power-off"></i>&nbsp;Reset</a></li>
-                <li class="navItemH" id="passTurnH"><a><i class="fas fa-toggle-on"></i>&nbsp;Pass</a></li>
-                <li class="navItemH" id="statsH"><a><i class="fas fa-table"></i>&nbsp;Stats</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
 
-<!--choose player-->
-<div class="modal fade" id="choosePlayer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false" data-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">CHOOSE PLAYER</h4>
-            </div>
-            <div class="modal-body">
-                <div class="player1Modal" data-dismiss="modal">
-
+    <!--choose player-->
+    <div class="modal fade" id="choosePlayer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">CHOOSE PLAYER</h4>
                 </div>
-                <div class="player2Modal" data-dismiss="modal">
+                <div class="modal-body">
+                    <div class="player1Modal" data-dismiss="modal">
 
+                    </div>
+                    <div class="player2Modal" data-dismiss="modal">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p>Click on one of the piece you want to play.</p>
                 </div>
             </div>
-            <div class="modal-footer">
-                <p>Click on one of the piece you want to play.</p>
+        </div>
+    </div>
+
+    <!--reset game-->
+    <div class="modal fade" id="resetGame" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">CHOOSE PLAYER</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="player1Modal" data-dismiss="modal">
+                    </div>
+                    <div class="player2Modal" data-dismiss="modal">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="resetCancel">Cancel</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!--reset game-->
-<div class="modal fade" id="resetGame" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false" data-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">CHOOSE PLAYER</h5>
+    <!--win modal-->
+    <div id="wM" class="winModal">
+        <div class="innerModal">
+            <div class="modalHeader text-center">
+                <p>You are the winner</p>
             </div>
-            <div class="modal-body">
-                <div class="player1Modal" data-dismiss="modal">
-                </div>
-                <div class="player2Modal" data-dismiss="modal">
-                </div>
+            <div class="winnerImg"></div>
+            <div class="modalBody text-center">
+                Congratulations
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" id="resetCancel">Cancel</button>
+            <div class="closeBtnModal">
+                <button type='button' class="btn btn-primary" id="startBtn">Start New Game</button>
             </div>
         </div>
     </div>
-</div>
+    <!--Rules Modal-->
+    <div class="rulesModal" id="rulesModal">
+        <div id="rulesCancelBtn"><span class="timesClose">&times;</span></div>
+        <div class="rulesInnerModal">
+            <div class="rulesHeader text-center"><h3>The Basic Rules of Checkers</h3></div>
+            <div class="rules-content">
+                <span class="rulesBold">Checkers</span> is a board game played between two players, who alternate moves. The player who cannot move, because he has no pieces, or because all of his pieces are blocked, loses the game. Players can resign or agree to draws.<br>
 
-<!--win modal-->
-<div id="wM" class="winModal">
-    <div class="innerModal">
-        <div class="modalHeader text-center">
-            <p>You are the winner</p>
-        </div>
-        <div class="winnerImg"></div>
-        <div class="modalBody text-center">
-            Congratulations
-        </div>
-        <div class="closeBtnModal">
-            <button type='button' class="btn btn-primary" id="startBtn">Start New Game</button>
-        </div>
-    </div>
-</div>
-<!--Rules Modal-->
-<div class="rulesModal" id="rulesModal">
-    <div id="rulesCancelBtn"><span class="timesClose">&times;</span></div>
-    <div class="rulesInnerModal">
-        <div class="rulesHeader text-center"><h3>The Basic Rules of Checkers</h3></div>
-        <div class="rules-content">
-            <span class="rulesBold">Checkers</span> is a board game played between two players, who alternate moves. The player who cannot move, because he has no pieces, or because all of his pieces are blocked, loses the game. Players can resign or agree to draws.<br>
+                <span class="rulesBold">The board</span> is square, with sixty-four smaller squares, arranged in an 8x8 grid. The smaller squares are alternately light and dark colored (green and buff in tournaments), in the famous "checker-board" pattern. The game of checkers is played on the dark (black or green) squares. Each player has a dark square on his far left and a light square on his far right. The double-corner is the distinctive pair of dark squares in the near right corner.<br>
 
-            <span class="rulesBold">The board</span> is square, with sixty-four smaller squares, arranged in an 8x8 grid. The smaller squares are alternately light and dark colored (green and buff in tournaments), in the famous "checker-board" pattern. The game of checkers is played on the dark (black or green) squares. Each player has a dark square on his far left and a light square on his far right. The double-corner is the distinctive pair of dark squares in the near right corner.<br>
+                <span class="rulesBold">The pieces</span> are Black and White, and are called Black and White in most books. In some modern publications, they are called Red and White. Sets bought in stores may be other colors. Black and Red pieces are still called Black (or Red) and White, so that you can read the books. The pieces are of cylindrical shape, much wider than they are tall. Tournament pieces are smooth, and have no designs (crowns or concentric circles) on them. The pieces are placed on the dark squares of the board.<br>
 
-            <span class="rulesBold">The pieces</span> are Black and White, and are called Black and White in most books. In some modern publications, they are called Red and White. Sets bought in stores may be other colors. Black and Red pieces are still called Black (or Red) and White, so that you can read the books. The pieces are of cylindrical shape, much wider than they are tall. Tournament pieces are smooth, and have no designs (crowns or concentric circles) on them. The pieces are placed on the dark squares of the board.<br>
+                <span class="rulesBold">The starting position</span> is with each player having twelve pieces, on the twelve dark squares closest to his edge of the board. Notice that in checker diagrams, the pieces are placed on the light colored squares, for readability. On a real board they are on the dark squares.<br>
 
-            <span class="rulesBold">The starting position</span> is with each player having twelve pieces, on the twelve dark squares closest to his edge of the board. Notice that in checker diagrams, the pieces are placed on the light colored squares, for readability. On a real board they are on the dark squares.<br>
+                <span class="rulesBold">Moving:</span> A piece which is not a king can move one square, diagonally, forward. A king can move diagonally, forward or backward. A piece (piece or king) can only move to a vacant square. A move can also consist of one or more jumps (next paragraph).<br>
 
-            <span class="rulesBold">Moving:</span> A piece which is not a king can move one square, diagonally, forward. A king can move diagonally, forward or backward. A piece (piece or king) can only move to a vacant square. A move can also consist of one or more jumps (next paragraph).<br>
+                <span class="rulesBold">Jumping:</span> You capture an opponent's piece by jumping over it, diagonally, to the adjacent vacant square beyond it. A king can jump diagonally, forward or backward. A piece which is not a king, can only jump diagonally forward. You can make a multiple jump, with one piece only, by jumping to empty square to empty square. You can only jump one piece, with any given jump. But you can jump several pieces, with a move of several jumps. You remove the jumped pieces from the board. You cannot jump your own piece. You cannot jump the same piece twice, in the same move. If you can jump, you must. And, a multiple jump must be completed. You cannot stop part way through a multiple jump. If you have a choice of jumps, you can choose among them, regardless of whether some of them are multiple, or not. A piece, whether it is a king or not, can jump a king.<br>
 
-            <span class="rulesBold">Jumping:</span> You capture an opponent's piece by jumping over it, diagonally, to the adjacent vacant square beyond it. A king can jump diagonally, forward or backward. A piece which is not a king, can only jump diagonally forward. You can make a multiple jump, with one piece only, by jumping to empty square to empty square. You can only jump one piece, with any given jump. But you can jump several pieces, with a move of several jumps. You remove the jumped pieces from the board. You cannot jump your own piece. You cannot jump the same piece twice, in the same move. If you can jump, you must. And, a multiple jump must be completed. You cannot stop part way through a multiple jump. If you have a choice of jumps, you can choose among them, regardless of whether some of them are multiple, or not. A piece, whether it is a king or not, can jump a king.<br>
+                <span class="rulesBold">Kinging:</span> When a piece reaches the last row (the King Row), it becomes a King. A second checker is place on top of that one, by the opponent. A piece that has just kinged, cannot continue jumping pieces, until the next move.<br>
 
-            <span class="rulesBold">Kinging:</span> When a piece reaches the last row (the King Row), it becomes a King. A second checker is place on top of that one, by the opponent. A piece that has just kinged, cannot continue jumping pieces, until the next move.<br>
-
-        </div>
-        <div class="btn btn-default" id="closeBtnRules">Close</div>
-    </div>
-</div>
-<!--contact modal-->
-<div class="formModal" id="formModal">
-    <div class="innerFormModal">
-        <div class="formContainer">
-            <p class="formHeader text-center">Contact Form</p>
-            <form id="formData">
-                <div class="formLine">
-                    <label for="name">Your Name:</label><input name="name" id="name" type="text" class="field"/>
-                    <p class="nameError error text-center"></p>
-                </div>
-                <div class="formLine">
-                    <label for="email">Your Email:</label><input name="email" id="email" type="text" class="field"/>
-                    <p class="emailError error text-center"></p>
-                </div>
-                <div class="formLine">
-                    <label for="message">Message:</label><textarea name="message" id="message" class="field"></textarea>
-                    <p class="messageError error text-center"></p>
-                </div>
-                <button type="button" id="sendMessage">Send</button>
-            </form>
-        </div>
-    </div>
-</div>
-<!--contact toast message-->
-<div id="contactToastMessage" class="text-center">
-    <h4>&#10003; Your message has been sent.</h4>
-</div>
-<!--not your turn message-->
-<div id="notYourTurnMessage" class="text-center">
-    <p>It is not your turn.</p>
-</div>
-<!--stats modal-->
-<div class="statsModalShowBtn">
-    <p>Statistics</p>
-    <p class="statsAngleIcon"><i class="fas fa-angle-down fa-lg"></i></p>
-</div>
-<div class="statsModalContainer">
-    <div class="statsModal">
-        <div class="statsModalHeader">
-            <h3>Statistics</h3>
-        </div>
-        <div class="statsModalContent">
-            <div class="player1ModalStat">
-                <table>
-                    <tr>
-                        <th class="statHeader" colspan="2">Player 1</th>
-                    </tr>
-                    <tr>
-                        <td>Won:</td>
-                        <td class="statPara wWon">0</td>
-                    </tr>
-                    <tr>
-                        <td>Lost:</td>
-                        <td class="statPara wLost">0</td>
-                    </tr>
-                    <tr>
-                        <td>Total Played:</td>
-                        <td class="statPara wTotalPlayed">0</td>
-                    </tr>
-                    <tr>
-                        <td>W/L Ratio:</td>
-                        <td class="statPara wRatio">0</td>
-                    </tr>
-                </table>
             </div>
-            <div class="player2ModalStat">
-                <table>
-                    <tr>
-                        <th class="statHeader" colspan="2">Player 2</th>
-                    </tr>
-                    <tr>
-                        <td>Won:</td>
-                        <td class="statPara bWon">0</td>
-                    </tr>
-                    <tr>
-                        <td>Lost:</td>
-                        <td class="statPara bLost">0</td>
-                    </tr>
-                    <tr>
-                        <td>Total Played:</td>
-                        <td class="statPara bTotalPlayed">0</td>
-                    </tr>
-                    <tr>
-                        <td>W/L Ratio:</td>
-                        <td class="statPara bRatio">0</td>
-                    </tr>
-                </table>
+            <div class="btn btn-default" id="closeBtnRules">Close</div>
+        </div>
+    </div>
+    <!--contact modal-->
+    <div class="formModal" id="formModal">
+        <div class="innerFormModal">
+            <div class="formContainer">
+                <p class="formHeader text-center">Contact Form</p>
+                <form id="formData">
+                    <div class="formLine">
+                        <label for="name">Your Name:</label><input name="name" id="name" type="text" class="field"/>
+                        <p class="nameError error text-center"></p>
+                    </div>
+                    <div class="formLine">
+                        <label for="email">Your Email:</label><input name="email" id="email" type="text" class="field"/>
+                        <p class="emailError error text-center"></p>
+                    </div>
+                    <div class="formLine">
+                        <label for="message">Message:</label><textarea name="message" id="message" class="field"></textarea>
+                        <p class="messageError error text-center"></p>
+                    </div>
+                    <button type="button" id="sendMessage">Send</button>
+                </form>
             </div>
         </div>
-        <div class="statsModalFooter">
-            <div class="statsModalHideBtn"><i class="fas fa-angle-up fa-lg"></i></div>
+    </div>
+    <!--contact toast message-->
+    <div id="contactToastMessage" class="text-center">
+        <h4>&#10003; Your message has been sent.</h4>
+    </div>
+    <!--not your turn message-->
+    <div id="notYourTurnMessage" class="text-center">
+        <p>It is not your turn.</p>
+    </div>
+    <!--stats modal-->
+    <div class="statsModalShowBtn">
+        <p>Statistics</p>
+        <p class="statsAngleIcon"><i class="fas fa-angle-down fa-lg"></i></p>
+    </div>
+    <div class="statsModalContainer">
+        <div class="statsModal">
+            <div class="statsModalHeader">
+                <h3>Statistics</h3>
+            </div>
+            <div class="statsModalContent">
+                <div class="player1ModalStat">
+                    <table>
+                        <tr>
+                            <th class="statHeader blackPiece" colspan="2"></th>
+                        </tr>
+                        <tr>
+                            <td>Won:</td>
+                            <td class="statPara bWon">0</td>
+                        </tr>
+                        <tr>
+                            <td>Lost:</td>
+                            <td class="statPara bLost">0</td>
+                        </tr>
+                        <tr>
+                            <td>Total Played:</td>
+                            <td class="statPara bTotalPlayed">0</td>
+                        </tr>
+                        <tr>
+                            <td>W/L Ratio:</td>
+                            <td class="statPara bRatio">0</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="player2ModalStat">
+                    <table>
+                        <tr>
+                            <th class="statHeader whitePiece" colspan="2"></th>
+                        </tr>
+                        <tr>
+                            <td>Won:</td>
+                            <td class="statPara wWon">0</td>
+                        </tr>
+                        <tr>
+                            <td>Lost:</td>
+                            <td class="statPara wLost">0</td>
+                        </tr>
+                        <tr>
+                            <td>Total Played:</td>
+                            <td class="statPara wTotalPlayed">0</td>
+                        </tr>
+                        <tr>
+                            <td>W/L Ratio:</td>
+                            <td class="statPara wRatio">0</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="statsModalFooter">
+                <div class="statsModalHideBtn"><i class="fas fa-angle-up fa-lg"></i></div>
+            </div>
         </div>
     </div>
 </div>

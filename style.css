@@ -1,4 +1,6 @@
-body{
+.wholePageContainer{
+    width: 100vw;
+    height: 100vh;
     background-image: url("images/bg2.jpg");
     background-repeat: no-repeat;
     background-position: center;
@@ -12,8 +14,8 @@ body{
 }
 .myLogo{
     position: absolute;
-    width: 14vmin;
-    height: 14vmin;
+    width: 12vmin;
+    height: 12vmin;
     background-image: url("images/myLogo.png");
     background-position: center;
     background-size: contain;
@@ -84,14 +86,14 @@ body{
     height: 100%;
 }
 .light{
-    background-color: #9e1b0f;
+    background-color: #008419;
 }
 .dark{
-    background-color: #2e86c0;
+    background-color: #8f4831;
 
 }
 .whitePiece{
-    background-image: url("images/whitePiece.png");
+    background-image: url("images/nike.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -119,7 +121,7 @@ body{
     float: left;
 }
 .blackPiece{
-    background-image: url("images/blackPiece.png");
+    background-image: url("images/addidas.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -308,7 +310,7 @@ body{
     font-size: 1.5rem;
 }
 table{
-    width: 100%;
+    width: 80%;
     background-color: rgba(48, 78, 49, 0.70);
     box-shadow: 0 0 5px 15px rgba(48, 78, 49, 0.7);
 }
@@ -318,6 +320,8 @@ table{
     font-weight: bold;
 }
 .statHeader{
+    width: 10vmin;
+    height: 10vmin;
     text-align: center;
     color: #2a00ff;
     text-decoration: underline;

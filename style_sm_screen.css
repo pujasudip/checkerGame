@@ -64,7 +64,7 @@
     }
     .statsModal{
         position: absolute;
-        height: 30%;
+        height: 40%;
         width: 100%;
         top: 0;
         background-color: rgb(202, 238, 251);
@@ -219,6 +219,11 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 100%;
+    }
+}
+@media only screen and (min-width: 900px) {
+    table {
         width: 100%;
     }
 }
