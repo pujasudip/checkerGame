@@ -2,6 +2,9 @@
     .main-container{
 
     }
+    #notYourTurnMessage{
+        top:40%;
+    }
     .header-banner{
         width: 100vw;
         height: 10vh;

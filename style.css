@@ -406,10 +406,10 @@ table{
 #notYourTurnMessage{
     display: none;
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translateX(-50%);
-    width: 30%;
+    width: 50%;
     height: 5%;
     background-color: #6effec;
     border-radius: 3px;
