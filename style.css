@@ -361,7 +361,7 @@ table{
     left: 50%;
     width: 70%;
     height: 70%;
-    background-color: #61DAFB;
+    background-color: #00a419;
     transform: translate(-50%, -50%);
     overflow-x: scroll;
     padding: 5%;
@@ -378,8 +378,10 @@ table{
     margin-top: 5%;
 }
 #rulesCancelBtn{
-    width: 5vmin;
-    height: 5vmin;
+    width: 1.8em;
+    height: 1.8em;
+    line-height: 1.6em;
+    text-align: center;
     color: white;
     position: absolute;
     top: 13%;
@@ -388,13 +390,7 @@ table{
     background-color: orangered;
     z-index: 2;
     cursor: pointer;
-}
-.timesClose{
-    font-size: 2rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    font-weight: bold;font-size: 2rem;
 }
 .menuOnFocus{
     background-color: rgba(11, 0, 180, 0.57);
@@ -453,4 +449,10 @@ ul{
 }
 .rulesHeader{
     margin-top: -5%;
+}
+#choosePlayer .modal-body{
+    background-color: #ebd2bd;
+}
+#resetGame .modal-body{
+    background-color: #ebd2bd;
 }
