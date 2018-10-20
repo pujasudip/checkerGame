@@ -86,10 +86,10 @@
     height: 100%;
 }
 .light{
-    background-color: #008419;
+    background-color: #8f4831;
 }
 .dark{
-    background-color: #8f4831;
+    background-color: #008419;
 
 }
 .whitePiece{
@@ -99,7 +99,7 @@
     background-position: center;
 }
 .whitePieceRemoved{
-    background-image: url("images/whitePieceRemoved.png");
+    background-image: url("images/nikeCaptured.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -127,7 +127,7 @@
     background-position: center;
 }
 .blackPieceRemoved{
-    background-image: url("images/blackPieceRemoved.png");
+    background-image: url("images/addidasCaptured.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -150,13 +150,13 @@
     }
 }
 .player1King{
-    background-image: url("images/blackPieceKing.png");
+    background-image: url("images/addidasKing.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
 }
 .player2King{
-    background-image: url("images/whitePieceKing.png");
+    background-image: url("images/nikeKing.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -170,7 +170,7 @@
     display: inline-block;
     width: 100px;
     height: 100px;
-    background-image: url("images/blackPiece.png");
+    background-image: url("images/addidas.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -180,7 +180,7 @@
     display: inline-block;
     width: 100px;
     height: 100px;
-    background-image: url("images/whitePiece.png");
+    background-image: url("images/nike.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -321,7 +321,6 @@ table{
 }
 .statHeader{
     width: 10vmin;
-    height: 10vmin;
     text-align: center;
     color: #2a00ff;
     text-decoration: underline;
@@ -451,4 +450,7 @@ ul{
 }
 .statsModalContainer{
     display: none;
+}
+.rulesHeader{
+    margin-top: -5%;
 }

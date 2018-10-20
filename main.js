@@ -104,6 +104,7 @@ class CheckerGame{
         this.currentPlayer = 1 - this.currentPlayer;
         $('.rowOfPieces div').removeClass('highlightPiece');
         $('.rowOfPieces div').removeClass('selectedToMove');
+        $('.rowOfPieces div').removeClass('killerMultiple');
 
         if(this.currentPlayer === 0){
             $('.player1Active').addClass('playerSelected');
