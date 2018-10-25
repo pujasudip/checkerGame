@@ -78,3 +78,35 @@
         height: 350px;
     }
 }
+@media only screen and (device-width: 768px) and (device-height: 1024px) {
+    .gameStatusPlayer1{
+        position: absolute !important;
+        top: 85vh !important;
+        left: 10vw;
+        width: 200px;
+        height: 350px;
+    }
+    .gameStatusPlayer2{
+        position: absolute !important;
+        top: 85vh !important;
+        right: 10vw;
+        width: 200px;
+        height: 350px;
+    }
+}
+@media only screen and (device-width: 1024px) and (device-height: 768px) {
+    .gameStatusPlayer1{
+        position: absolute !important;
+        top: 25vh !important;
+        left: -5vw;
+        width: 200px;
+        height: 350px;
+    }
+    .gameStatusPlayer2{
+        position: absolute !important;
+        top: 25vh !important;
+        right: -5vw;
+        width: 200px;
+        height: 350px;
+    }
+}
