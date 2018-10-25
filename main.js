@@ -27,11 +27,13 @@ function initializeApp(){
             $('.newGame').remove();
             game.currentPlayer = 0;
             game.startUp();
+            game.hoverEffectOnCurrentPlayer(0);
         });
         $('.player2Modal').click(function () {
             $('.newGame').remove();
             game.currentPlayer = 1;
             game.startUp();
+            game.hoverEffectOnCurrentPlayer(1);
         });
     });
     $('.resetGame').click(()=>{
@@ -233,6 +235,8 @@ class CheckerGame{
     populateChips(){
         $('.newGame').css('display', 'none');
         var rowsInGameBoard = $('.gameAction > .rowOfPieces');
+
+        this.hoverEffectOnCurrentPlayer(this.currentPlayer);
 
         // var squares = $('.square');
         // $(squares).animate({
@@ -1036,5 +1040,17 @@ class CheckerGame{
             $('.navbar > ul > li').removeClass('menuOnFocus');
             $(this).addClass('menuOnFocus');
         });
+    }
+
+    hoverEffectOnCurrentPlayer(currentPlayer) {
+        var p1 = document.getElementsByClassName('blackPiece');
+        var p2 = document.getElementsByClassName('whitePiece');
+        if (currentPlayer === 0) {
+            $(p2).removeClass('pieceHover');
+            $(p1).addClass('pieceHover');
+        } else if (currentPlayer === 1) {
+            $(p1).removeClass('pieceHover');
+            $(p2).addClass('pieceHover');
+        }
     }
 }

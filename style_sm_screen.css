@@ -4,8 +4,8 @@
     }
     .gameAction{
         position: absolute;
-        width: 85vmin;
-        height: 85vmin;
+        width: 75vmin;
+        height: 75vmin;
         margin-top: 1%;
     }
     .gameStatusPlayer1{
@@ -67,7 +67,7 @@
         height: 40%;
         width: 100%;
         top: 0;
-        background-color: rgb(202, 238, 251);
+        background-color: #fbc2a9;
         z-index: 1000;
         animation-name: slideInDown;
         animation-duration: 1s;
@@ -123,7 +123,7 @@
         left: 90%;
         width: 10%;
         height: 100%;
-        background-color: rgb(202, 238, 251);
+        background-color: #fbc2a9;
         border-radius: 0 0 0 7px;
         cursor: pointer;
     }
@@ -232,5 +232,28 @@
     #notYourTurnMessage{
         width: 30%;
         top: 50%;
+    }
+}
+@media only screen and (max-device-height: 500px){
+    .gameStatusPlayer1{
+        top: 40%;
+        left: -30%;
+    }
+    .gameStatusPlayer2{
+        top: 40%;
+        right: -30%;
+    }
+    .statsModalShowBtn{
+        height: 40px;
+    }
+    .hamMenu{
+        width: 25vw !important;
+        left: 75% !important;
+    }
+    .hamMenu *{
+        font-size: 1rem !important;
+    }
+    .winModal > .innerModal{
+        height: 55vh;
     }
 }

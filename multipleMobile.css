@@ -1,0 +1,80 @@
+@media only screen and (device-width: 320px) and (device-height: 480px) {
+   .gameStatusPlayer1{
+       position: absolute !important;
+       top: -10vh !important;
+       left: 0;
+       width: 70px;
+       height: 70px;
+   }
+    .gameStatusPlayer2{
+        position: absolute !important;
+        top: -10vh !important;
+        right: 0;
+        width: 70px;
+        height: 70px;
+    }
+}
+@media only screen and (device-width: 480px) and (device-height: 320px) {
+    .gameStatusPlayer1{
+        position: absolute !important;
+        top: -40vh !important;
+        left: 0;
+        width: 70px;
+        height: 70px;
+    }
+    .gameStatusPlayer2{
+        position: absolute !important;
+        top: -40vh !important;
+        right: 0;
+        width: 70px;
+        height: 70px;
+    }
+}
+@media only screen and (device-width: 812px) and (device-height: 375px) {
+    .gameStatusPlayer1{
+        position: absolute !important;
+        top: 40vh !important;
+        left: 10vw;
+        width: 70px;
+        height: 70px;
+    }
+    .gameStatusPlayer2{
+        position: absolute !important;
+        top: 40vh !important;
+        right: 10vw;
+        width: 70px;
+        height: 70px;
+    }
+}
+@media only screen and (device-width: 768px) and (device-height: 1024px) {
+    .gameStatusPlayer1{
+        position: absolute !important;
+        top: 65vh !important;
+        left: 10vw;
+        width: 70px;
+        height: 70px;
+    }
+    .gameStatusPlayer2{
+        position: absolute !important;
+        top: 65vh !important;
+        right: 10vw;
+        width: 70px;
+        height: 70px;
+    }
+}
+@media only screen and (device-width: 1024px) and (device-height: 1366px) {
+    .gameStatusPlayer1{
+        position: absolute !important;
+        top: 62vh !important;
+        left: 10vw;
+        width: 200px;
+        height: 350px;
+    }
+    .gameStatusPlayer2{
+        position: absolute !important;
+        top: 62vh !important;
+        right: 10vw;
+        width: 200px;
+        height: 350px;
+    }
+}

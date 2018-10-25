@@ -72,7 +72,7 @@
     margin: 0 1% 0;
     float: left;
     border: 2px solid #ffcc1b;
-    box-shadow: 10px 10px 5px 2px #d4cfca;
+    box-shadow: 5px 5px 3px 2px #d4cfca, -5px -5px 3px 2px #d4cfca;
 }
 .player1, .player2{
     display: inline-block;
@@ -84,6 +84,7 @@
     display: inline-block;
     width: 12.5%;
     height: 100%;
+    border: 2px solid rgba(0, 0, 0, 0);
 }
 .light{
     background-color: #8f4831;
@@ -226,7 +227,7 @@
 }
 .closeBtnModal{
     position: absolute;
-    bottom: 1%;
+    bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -315,12 +316,13 @@ table{
     box-shadow: 0 0 5px 15px rgba(48, 78, 49, 0.7);
 }
 .statPara{
-    color: #940000;
+    color: #ffffff;
     text-align: right;
     font-weight: bold;
 }
 .statHeader{
-    width: 10vmin;
+    width: 7vmin;
+    height: 7vmin;
     text-align: center;
     color: #2a00ff;
     text-decoration: underline;
@@ -354,6 +356,7 @@ table{
     width: 100%;
     height: 100%;
     background-color: rgba(211, 214, 198, 0.62);
+    overflow: auto;
 }
 .rulesInnerModal{
     position: absolute;
@@ -455,4 +458,10 @@ ul{
 }
 #resetGame .modal-body{
     background-color: #ebd2bd;
+}
+.hideKing{
+    display: none;
+}
+.pieceHover{
+    cursor: pointer;
 }
