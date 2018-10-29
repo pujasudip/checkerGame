@@ -595,7 +595,7 @@ class CheckerGame{
         if( board2DArray[enemyKilled[0]][enemyKilled[1]] === 1 || board2DArray[enemyKilled[0]][enemyKilled[1]] === 10){
             this.deceasedPlayer1Count++;
             if(this.deceasedPlayer1Count === 12){
-                $('.modalHeader').text("Player 2 is the winner");
+                $('.modalHeader>p').text("Player 2 is the winner");
                 $('.winnerImg').addClass('whitePiece');
                 $('.winModal').css('display', 'block');
                 this.wWon++;
@@ -622,7 +622,7 @@ class CheckerGame{
             this.deceasedPlayer2Count++;
             if(this.deceasedPlayer2Count === 12){
                 $('.winnerImg').addClass('blackPiece');
-                $('.modalHeader').text("Player 1 is the winner");
+                $('.modalHeader>p').text("Player 1 is the winner");
                 $('.winModal').css('display', 'block');
                 this.bWon++;
                 this.wLost++;

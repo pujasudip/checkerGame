@@ -154,6 +154,12 @@
     .killedPlayer1, .killedPlayer2 {
         display: none;
     }
+    .winModal .modalHeader>p{
+        font-size: 2rem;
+    }
+    .winModal .modalBody>p{
+        font-size: 2.5rem;
+    }
 }
 @media only screen and (max-width: 450px){
     .gameStatusPlayer1, .gameStatusPlayer2{
@@ -167,4 +173,12 @@
     .newGame{
         top: 35%;
     }
+    .winModal .modalBody>p{
+        font-size: 2rem;
+        margin-top: 5%;
+    }
+    .innerModal{
+        width: 90%;
+    }
+
 }

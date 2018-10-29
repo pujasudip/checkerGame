@@ -12,8 +12,8 @@
         position: absolute;
         top: 50%;
         left: 0;
-        height: 5vh;
-        width: 50vw;
+        height: 10vh;
+        width: 10vw;
         z-index: 100;
         transform: translateY(-50%);
     }
@@ -22,7 +22,7 @@
         top: 50%;
         right: 0;
         height: 10vh;
-        width: 50vw;
+        width: 10vw;
         transform: translateY(-50%);
     }
     .killedPlayer2, .killedPlayer1{
@@ -188,6 +188,12 @@
     .newGame{
         top: 45%;
     }
+    .modalHeader{
+        font-size: 3rem;
+    }
+    .winModal .modalHeader>p{
+       font-size: 3rem;
+    }
 }
 /*@media only screen and (max-width: 750px){*/
     /*.gameAction{*/
@@ -258,6 +264,6 @@
         font-size: 1rem !important;
     }
     .winModal > .innerModal{
-        height: 55vh;
+        height: 70vh;
     }
 }
