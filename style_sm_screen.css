@@ -1,4 +1,4 @@
-@media only screen and (max-width: 900px) {
+@media only screen and (min-width: 700px) and (max-width: 900px) {
     .statsModalShowBtn{
         display: inline-block;
     }
@@ -185,46 +185,49 @@
     #notYourTurnMessage{
         top: 50%;
     }
-}
-@media only screen and (max-width: 750px){
-    .gameAction{
-        width: 80vmin;
-        height: 80vmin;
-        margin-top: 5vh;
-    }
-    .gameStatusPlayer1 {
-        width: 40vw;
-        top: -3vh;
-        transform: none;
-    }
-    .gameStatusPlayer2{
-        width: 40vw;
-        top: -3vh;
-        transform: none;
-    }
-    .player1 > .playerImg{
-        float: right;
-    }
-    .player2 > .playerImg{
-        float: left;
-    }
-    .innerModal{
-        width: 75vw;
-    }
-    .modalHeader{
-        font-size: 2.5rem;
-    }
-    .modalBody{
-        font-size: 2.5rem;
-    }
-    .modalHeader > p{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
+    .newGame{
+        top: 45%;
     }
 }
+/*@media only screen and (max-width: 750px){*/
+    /*.gameAction{*/
+        /*width: 80vmin;*/
+        /*height: 80vmin;*/
+        /*margin-top: 5vh;*/
+    /*}*/
+    /*.gameStatusPlayer1 {*/
+        /*width: 40vw;*/
+        /*top: -3vh;*/
+        /*transform: none;*/
+    /*}*/
+    /*.gameStatusPlayer2{*/
+        /*width: 40vw;*/
+        /*top: -3vh;*/
+        /*transform: none;*/
+    /*}*/
+    /*.player1 > .playerImg{*/
+        /*float: right;*/
+    /*}*/
+    /*.player2 > .playerImg{*/
+        /*float: left;*/
+    /*}*/
+    /*.innerModal{*/
+        /*width: 75vw;*/
+    /*}*/
+    /*.modalHeader{*/
+        /*font-size: 2.5rem;*/
+    /*}*/
+    /*.modalBody{*/
+        /*font-size: 2.5rem;*/
+    /*}*/
+    /*.modalHeader > p{*/
+        /*position: absolute;*/
+        /*top: 50%;*/
+        /*left: 50%;*/
+        /*transform: translate(-50%, -50%);*/
+        /*width: 100%;*/
+    /*}*/
+/*}*/
 @media only screen and (min-width: 900px) {
     table {
         width: 100%;
@@ -233,15 +236,16 @@
         width: 30%;
         top: 50%;
     }
+    .newGame{
+        top: 45%;
+    }
 }
 @media only screen and (max-device-height: 500px){
     .gameStatusPlayer1{
         top: 40%;
-        left: -30%;
     }
     .gameStatusPlayer2{
         top: 40%;
-        right: -30%;
     }
     .statsModalShowBtn{
         height: 40px;

@@ -985,14 +985,16 @@ class CheckerGame{
             $('.messageError').text('');
         });
 
+        var regexEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
         sendBtn.addEventListener('click', ()=>{
             if(document.getElementById('name').value.length === 0){
                 hasError = true;
                 $('.nameError').text('Name cannot be empty.');
             }
-            if (document.getElementById('email').value.length === 0){
+            if (!regexEmail.test(document.getElementById('email').value.toLowerCase())){
                 hasError = true;
-                $('.emailError').text('No email was supplied.');
+                $('.emailError').text('No email/invalid email was supplied.');
             }
             if (document.getElementById('message').value.length === 0){
                 hasError = true;

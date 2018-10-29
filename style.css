@@ -1,9 +1,10 @@
 .wholePageContainer{
     width: 100vw;
     height: 100vh;
-    background-image: url("images/bg2.jpg");
+    background-image: url("images/stadium.jpg");
     background-repeat: no-repeat;
     background-position: center;
+    background-size: cover;
     background-color: rgba(209, 218, 255, 0.58);
 }
 .header-banner{
@@ -253,7 +254,7 @@
 }
 .navItem:hover{
     background-color: rgba(11, 0, 180, 0.34);
-    border:none;
+    border:1px solid rgba(8, 28, 229, 0);
 }
 .navItem>a{
     text-decoration: none;
@@ -364,7 +365,7 @@ table{
     left: 50%;
     width: 70%;
     height: 70%;
-    background-color: #00a419;
+    background-color: #e9d7c8;
     transform: translate(-50%, -50%);
     overflow-x: scroll;
     padding: 5%;
@@ -423,9 +424,9 @@ table{
 }
 .newGame{
     position: absolute;
-    top: 40%;
+    top: 5%;
     left: 50%;
-    transform: translate(-50%, -40%);
+    transform: translate(-50%);
 
 }
 .newGame > button{

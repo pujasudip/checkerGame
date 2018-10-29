@@ -1,4 +1,4 @@
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 700px){
     .main-container{
 
     }
@@ -17,7 +17,10 @@
         display: none;
     }
     .gameAction{
-        margin: 5vh 0 0 0;
+        display: inline-block;
+        height: 70vmin;
+        width: 70vmin;
+        margin: 15vh 0 0 0;
         box-shadow: none;
     }
     .statsModalShowBtn{
@@ -118,8 +121,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 50px;
-        height: 50px;
+        width: 35px;
+        height: 35px;
         background-image: url("images/myLogo.png");
         background-position: center;
         background-size: contain;
@@ -130,7 +133,7 @@
         height: 100%;
     }
     .gameStatusPlayer1, .gameStatusPlayer2{
-        margin-top: 75vh;
+        margin-top: 10px;
         width: 15vw;
     }
     #choosePlayer, #resetGame{
@@ -145,13 +148,23 @@
     .killedPlayer2Img, .killedPlayer2Img{
         margin-right: 2px;
     }
+    .player1Stat, .player2Stat{
+        display: none;
+    }
+    .killedPlayer1, .killedPlayer2 {
+        display: none;
+    }
 }
 @media only screen and (max-width: 450px){
     .gameStatusPlayer1, .gameStatusPlayer2{
         margin-top: 75vh;
         width: 15vw;
+        height: 100px;
     }
     .gameAction{
         margin-top: 10vh;
+    }
+    .newGame{
+        top: 35%;
     }
 }
