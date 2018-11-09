@@ -1,6 +1,6 @@
-#Checkers
+# Checkers
 
-###Two player board game
+### Two player board game
 
 This game could be played between players locally.
 
