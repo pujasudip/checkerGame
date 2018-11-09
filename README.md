@@ -13,6 +13,10 @@ If you are new to this game, rules are supplied to you in the game.
 To clone:
 ```
 git clone https://github.com/pujasudip/checkerGame.git
-
 ```
+## Technologies Used:
+* HTML/CSS
+* Bootstrap
+* JavaScript
+* PHP
 
